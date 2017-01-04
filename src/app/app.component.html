@@ -1,12 +1,144 @@
-
-<div class="col-md-2"></div>
-    <div class="col-md-8">
-
-      <div class="well wellColor animated fadeIn"> </div>
-        <h1>This is quantotest 1helo</h1>
-    </div>
-<div class="col-md-2"></div>
-
 <style>
-  
+  .wellColor{
+    
+    background-color: #FFBA00;
+  }
+  .well {
+      padding: 1em;
+      min-height: 20px;
+      margin-bottom: 20px;
+      
+      border-radius: 4px;
+      -webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .finalCalc {
+    font-size:4em;
+  }
+  .info p { 
+    color: #fff;
+  }
 </style>
+
+<!--<form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" class="form-control" formControlName="product">
+      <small [hidden]="myForm.controls.name.valid || (myForm.controls.name.pristine && !submitted)" class="text-danger">
+            Name is required (minimum 5 characters).
+          </small>
+      <pre class="margin-20">{{ myForm.controls.name.errors | json }}</pre>
+    </div>
+    <div class="form-group">
+      <label for="">Address</label>
+      <input type="text" class="form-control" formControlName="baseCurrency">
+      <small [hidden]="myForm.controls.address.controls.street.valid || (myForm.controls.address.controls.street.pristine && !submitted)" class="text-danger">
+            Street required
+          </small>
+    </div>
+    <div class="form-group">
+      <label for="">Postcode</label>
+      <input type="text" class="form-control" formControlName="destinationCurrency">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="margin-20">
+      <div>myForm details:-</div>
+      <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+      <pre>Is myForm submitted?: <br>{{submitted | json}}</pre>
+      <pre>myForm value: <br>{{myForm.value | json}}</pre>
+    </div>
+    <div class="margin-20">
+      Form changes:
+    </div>
+    <div *ngFor="let event of events" class="margin-20">
+      <pre> {{ event | json }} </pre>
+    </div>
+  </form>-->
+
+  <!---->
+  <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
+<div class="col-md-2 col-lg-2"></div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
+      <div class="well wellColor animated fadeIn"> 
+<!---->
+<span *ngIf="myForm.controls.baseCurrency.value == 'ZAR'">
+<!---->
+        <!--[INFO SECTION]-->
+        <div class="row">
+          <div class="info">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              
+                <!--Text-->
+                <label for="">Price</label>
+                  <p>Loerm</p>
+                <label for="">Range</label>
+                <p>sprint 4</p>
+                <label for="">Price in Local Currency</label>
+                  <p>Loerm</p>
+                <label for="">Price in [LOCAL]</label>
+                  <p>Loerm</p>
+                <small>forgien price = local price in local currency</small>
+                <hr>
+                <label for="">Exchange</label>
+                  <p>Local C vs Forgien C</p>
+                  <p>Forgien C vs Local C</p>
+                <small><i class="fa fa-refresh" aria-hidden="true"></i> time of last update UCT</small>
+                <hr>
+                <div class="well">
+                  <span class="finalCalc">64%</span>
+                  <br>
+                  <small>Product is Less/More Expansive</small>
+                </div>
+
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <!--Image-->
+                <label for="">Image/icon Info</label>
+            </div>
+          </div>
+        </div>
+<hr>
+
+<!---->
+</span>
+<!---->
+ <!-- [commodity SECTION]-->
+        <div class="row">
+          <div class="container">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <select class="form-control" formControlName="product">
+                  <option value="">Select Commodity</option>
+                  <option value="Coke">Coke/Pepsi (0.33 liter bottle)</option>
+                  <option value="DBeer">Domestic Beer (0.5 liter draught)</option>
+                  <option value="IBeer">Imported Beer (0.33 liter bottle)</option>
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <hr>  
+        <!--[currency SECTION]-->
+        <div class="row">
+          <div class="container">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <select class="form-control" formControlName="baseCurrency">
+                <option value="">Select Base Currency...</option>
+                <option value="ZAR">ZAR</option>
+              </select>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <select class="form-control" formControlName="destinationCurrency"> 
+                <option value="">Select Destination Currency...</option>
+                <option value="GBP">GBP</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+            <div class="margin-20">
+              <pre>myForm value: <br>{{myForm.value | json}}</pre>
+            </div>
+    </div>
+<div class="col-md-2 col-lg-2"></div>
+
+  </form>
