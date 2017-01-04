@@ -1,0 +1,65 @@
+Notes:
+
+
+#commands to remember
+ng build --prod
+firebase deploy
+
+
+                    ? What file should be used for Database Rules? database.rules.json
+                    ✔  Database Rules for quantotest-8a1ec have been downloaded to database.rules.json.
+                    Future modifications to database.rules.json will update Database Rules when you run
+                    firebase deploy.
+
+                    === Hosting Setup
+
+                    Your public directory is the folder (relative to your project directory) that
+                    will contain Hosting assets to be uploaded with firebase deploy. If you
+                    have a build process for your assets, use your build's output directory.
+
+                    ? What do you want to use as your public directory? dist
+                    ? Configure as a single-page app (rewrite all urls to /index.html)? Yes
+                    ? File dist/index.html already exists. Overwrite? No
+                    i  Skipping write of dist/index.html
+
+                    i  Writing configuration info to firebase.json...
+                    i  Writing project information to .firebaserc...
+
+                    ✔  Firebase initialization complete!
+                    bash-3.2$ firebase deploy
+
+                    === Deploying to 'quantotest-8a1ec'...
+
+                    i  deploying database, hosting
+                    ✔  database: rules ready to deploy.
+                    i  hosting: preparing dist directory for upload...
+                    Uploading: [====================================    ] 91%✔  hosting: dist folder uploaded successfully
+                    ✔  hosting: 11 files uploaded successfully
+                    i  starting release process (may take several minutes)...
+
+                    ✔  Deploy complete!
+
+                    Project Console: https://console.firebase.google.com/project/quantotest-8a1ec/overview
+                    Hosting URL: https://quantotest-8a1ec.firebaseapp.com
+                    bash-3.2$ firebase deploy
+
+                    === Deploying to 'quantotest-8a1ec'...
+
+                    i  deploying database, hosting
+                    ✔  database: rules ready to deploy.
+                    i  hosting: preparing dist directory for upload...
+                    Uploading: [====================================    ] 91%✔  hosting: dist folder uploaded successfully
+                    ✔  hosting: 11 files uploaded successfully
+                    i  starting release process (may take several minutes)...
+
+                    ✔  Deploy complete!
+
+follow instuctions here:
+Hosting Angular 2 Applications On Firebase:
+https://medium.com/codingthesmartway-com-blog/hosting-angular-2-applications-on-firebase-f194688c978d#.5oypjp4sv
+
+Linking to gitlab
+
+https://gitlab.com/QuantoTest/quantoApp
+
+https://www.youtube.com/watch?v=A5E0EbHbSjQ
