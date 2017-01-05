@@ -5,6 +5,8 @@ Notes:
 ng build --prod
 firebase deploy
 
+ssh-keygen -t rsa -C "GitLab" -b 4096
+pbcopy < ~/.ssh/id_rsa.pub
 
                     ? What file should be used for Database Rules? database.rules.json
                     ✔  Database Rules for quantotest-8a1ec have been downloaded to database.rules.json.
