@@ -8,6 +8,10 @@ import { User } from './user.interface';
   styleUrls: ['./css/app.component.css']
 })
 export class AppComponent {
+
+    
+
+
   public myForm: FormGroup;
     public submitted: boolean;
     public events: any[] = [];

@@ -19,6 +19,31 @@
   <script> 
 $(window).load(function() {
   $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+
+
+  //geoLocation
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+
+      var lat = position.coords.latitude; 
+      var long = position.coords.longitude;
+
+        $.getJSON('http://ws.geonames.org/countryCode?lat='+lat+'&lng='+long+'&username=Tawanda', {
+            type: 'JSON'
+        }, function(result) {
+           // alert(result.countryName);
+           
+           document.getElementById("userLoc").innerHTML = result.countryName+' ('+result.countryCode+')';
+           
+           document.getElementById("currentLocOpt").innerHTML = 'Current Location: '+result.countryName+' ('+result.countryCode+')';
+           document.getElementById("currentLocOpt").value = result.countryCode;
+
+            console.log(result.countryName+' ('+result.countryCode+')');
+
+        });
+    });
+}
+
 });
 </script>
 </html>
