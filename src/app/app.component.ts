@@ -9,9 +9,6 @@ import { User } from './user.interface';
 })
 export class AppComponent {
 
-    
-
-
   public myForm: FormGroup;
     public submitted: boolean;
     public events: any[] = [];

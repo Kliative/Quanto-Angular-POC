@@ -16,34 +16,262 @@
 </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/assets/js/money.min.js"></script>
+  <script src=""></script>
   <script> 
-$(window).load(function() {
-  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 
+  var baseCurSelection = '';
+  var destCurSelection = '';
+  var prodSelection = '';
 
-  //geoLocation
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
+  
+  $(window).load(function() {
 
-      var lat = position.coords.latitude; 
-      var long = position.coords.longitude;
+    //amke window scroll down
+    $("html, body").animate({ scrollTop: $(document).height() }, 1000);
 
-        $.getJSON('http://ws.geonames.org/countryCode?lat='+lat+'&lng='+long+'&username=Tawanda', {
-            type: 'JSON'
-        }, function(result) {
-           // alert(result.countryName);
-           
-           document.getElementById("userLoc").innerHTML = result.countryName+' ('+result.countryCode+')';
-           
-           document.getElementById("currentLocOpt").innerHTML = 'Current Location: '+result.countryName+' ('+result.countryCode+')';
-           document.getElementById("currentLocOpt").value = result.countryCode;
+    // dropdown select
+    $baseCurSel_option_selected = $("#baseCurSel");
+    $destCurSel_option_selected = $("#destCurSel");
+    $prodSel_option_selected = $("#prodSel");
 
-            console.log(result.countryName+' ('+result.countryCode+')');
+    $baseCurSel_option_selected.change(function() {  baseCurSelection = $(this).val(); });    
+    $destCurSel_option_selected.change(function() {  destCurSelection = $(this).val(); });
+    $prodSel_option_selected.change(function() {  prodSelection = $(this).val(); });
 
-        });
+    baseCurSelection = $baseCurSel_option_selected.val();
+    destCurSelection = $destCurSel_option_selected.val();
+    prodSelection = $prodSel_option_selected.val();
+
+    $('#baseCurSel').on('change', function() {
+      var baseCurSelection = this.value ;
+      console.log('Base selcted 1: '+baseCurSelection);
+    })
+
+    $('#destCurSel').on('change', function() {
+        var destCurSelection = this.value ;
+      console.log('Destin selcted 2: '+destCurSelection);
     });
-}
 
-});
-</script>
+    $('#prodSel').on('change', function() {
+      var prodSelection = this.value ;
+      console.log('Prod selcted 3: '+prodSelection);
+    })
+    // $.getJSON('http://api.fixer.io/latest', getExchangeRate);
+      
+    //Country Codes
+    $.getJSON('/assets/js/countryJSON/alpha-country-list.json', function(ccData) {    
+    // $.getJSON('/assets/js/countryJSON/country-codes.json', function(ccData) {
+      // $.getJSON('/assets/js/country_test.json', function(ccData) {
+        //data is the JSON string
+        // console.log('data is the JSON string= '+ccData);
+            // for (var key in ccData) {
+            //       if (ccData.hasOwnProperty(key)) {
+            //         var val = ccData[key];
+
+                    
+            //         // console.log("Val= "+val.products.McMeal);
+            //           // $.each(countryProd, function(key, val) {
+            //         if(val.hasOwnProperty('products')){
+                      
+
+            //           $('#QuantoCalc').click(function(){
+            //             // console.log(val.products);
+            //             console.log(prodSelection);
+                        
+            //           });
+                      
+            //           // console.log('hey = '+ccData[i].products.McMeal);
+            //           if(prodSelection == val.products){
+
+            //           }
+            //         }
+                    
+            //       }
+            // }
+
+//             function getObject(theObject) {
+//             var result = null;
+//             if(theObject instanceof Array) {
+//                 for(var i = 0; i < theObject.length; i++) {
+//                     result = getObject(theObject[i]);
+//                     if (result) {
+//                         break;
+//                     }   
+//                 }
+//             }
+//             else
+//             {
+//                 for(var prop in theObject) {
+//                     // console.log(prop + ': ' + theObject[prop]);
+//                     if(prop == 'products') {
+//                        console.log(theObject[prop]);
+//                         if(theObject[prop] == 'McMeal') {
+
+
+//                             return theObject;
+//                         }
+//                     }
+//                     if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
+//                         result = getObject(theObject[prop]);
+//                         if (result) {
+//                             break;
+//                         }
+//                     } 
+//                 }
+//             }
+//             return result;
+//         }
+// getObject(ccData);
+
+
+        function getObject(theObject, baseCur) {
+            var result = null;
+            if(theObject instanceof Array) {
+                for(var i = 0; i < theObject.length; i++) {
+                    result = getObject(theObject[i]);
+                    if (result) {
+                        break;
+                    }   
+                }
+            }
+            else
+            {
+                for(var prop in theObject) {
+                    // console.log(prop + ': ' + theObject[prop]);
+                    
+                      
+                    // if(prop == 'name') {
+                    //   //  console.log("McMeal "+theObject[prop].McMeal);
+                        
+                    //     return theObject;
+                        
+                    // }
+                    if(prop == 'name') {
+                      console.log("This Works ="+baseCur);
+                        if(theObject[prop] == '') {
+                            return theObject;
+                        }
+                    }
+                    // if(prop == 'products') {
+                    //    console.log("McMeal "+theObject[prop].McMeal);
+                        
+                    //     return theObject[prop];
+                        
+                    // }
+                    
+                    if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
+                        result = getObject(theObject[prop]);
+                        if (result) {
+                            break;
+                        }
+                    } 
+                }
+            }
+            return result;
+        }
+
+
+
+
+
+    // Exchange Rates
+    var baseCur = "";
+    var destCur = "";
+    
+    var getExchangeRate = function(data) {
+      fx.base = "USD";
+      fx.rates = data.rates;
+      // var rate = fx(1).from(baseCur).to(destCur);
+      var bVdRate = fx(1).from(baseCur).to(destCur);
+      // console.log("Exchange: 1 "+baseCur+" = "+bVdRate.toFixed(5)+" "+destCur); 
+    }
+    $.getJSON('https://openexchangerates.org/api/latest.json?app_id=8189c190e69d471fb0b4abfba0a7c023', getExchangeRate);
+    
+    $('#QuantoCalc').click(function(){
+      var vv = getObject(ccData, baseCurSelection);
+      console.log('Base selcted 1: '+baseCurSelection);
+      console.log('click');
+      console.log(vv);                   
+      console.log(vv[prodSelection]);   
+                            
+
+        var dVbRate = fx(1).from(baseCurSelection).to(destCurSelection);
+
+        var dVb2Rate = fx(1).from(destCurSelection).to(baseCurSelection);
+
+        document.getElementById("basVdestTxt").innerHTML = dVbRate.toFixed(5);
+        document.getElementById("destVbasTxt").innerHTML = dVb2Rate.toFixed(5);
+
+        console.log("Selection Exchange: "+baseCurSelection+"1 = "+destCurSelection+" "+dVbRate.toFixed(5));
+    });                       
+    // console.log(getObject(ccData));
+
+
+          //geoLocation
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+
+              var lat = position.coords.latitude; 
+              var long = position.coords.longitude;
+
+                $.getJSON('https://freegeoip.net/json/?callback=?', function(location) {
+                  // console.log('freegeoip country_name = '+location.country_name);
+                  // console.log('freegeoip country_code = '+location.country_code);
+                  // console.log('freegeoip city = '+location.city);
+                  // console.log('freegeoip region_name = '+location.region_name);
+
+                    // alert(location.countryName);
+                    // console.log('Your Current Counrty: '+location.countryName+' ('+location.countryCode+')');
+
+                    //user location
+                    document.getElementById("userLoc").innerHTML = location.country_name+' ('+location.country_code+')';
+
+                    // document.getElementById("currentLocOpt").value = location.countryCode;
+
+                    for(var i = 0; i < ccData.length; i++) {
+
+                        if (ccData[i].ISO3166_1_Alpha_2 == location.country_code){
+                          //dropdown current location <option>
+                          document.getElementById("currentLocOpt").innerHTML = 'Current Location: '+location.country_name+' ('+location.country_code+')';
+                          document.getElementById("currentLocOpt").value = ccData[i].ISO4217_currency_alphabetic_code;
+                            // console.log("Some Dats: "+ccData[i].ISO4217_currency_alphabetic_code);
+                        }
+                        
+                        var countryListData = ccData[i];
+                        // console.log(countryListData);
+
+                        var countryName = countryListData.name;
+                        // console.log("countryName "+[i]+" = "+countryName);
+
+                        var countryCode = countryListData.ISO3166_1_Alpha_2;
+                        // console.log("countryCode "+[i]+" = "+countryCode+" which is "+countryListData.ISO3166_1_Alpha_2);
+
+                        var countryCurrencyCode = countryListData.ISO4217_currency_alphabetic_code;
+                        // console.log("countryCurrencyCode "+[i]+" = "+countryCurrencyCode);
+
+                        var countryProd = countryListData.products;
+                        // console.log("countryProd "+[i]+" = "+countryProd);
+                        // console.log("countryProd length"+[i]+" = "+countryProd.length);
+
+                        $("#baseCurSel").append($('<option>', {
+                          value: countryCurrencyCode,
+                          text: countryName
+                        }));
+
+                        $("#destCurSel").append($('<option>', {
+                            value: countryCurrencyCode,
+                            text: countryName
+                        }));
+                        
+                    }
+                });
+            });
+          }
+    });
+
+    
+
+  });
+  </script>
 </html>

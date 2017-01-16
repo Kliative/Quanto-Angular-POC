@@ -1,0 +1,143 @@
+[
+    {
+        "name": "South Africa",
+        "official_name_en": "South Africa",
+        "ISO3166_1_Alpha_2": "ZA",
+        "ISO4217_currency_alphabetic_code": "ZAR",
+        "ISO4217_currency_country_name": "SOUTH AFRICA",
+        "ISO4217_currency_name": "Rand",
+        "Capital": "Pretoria",
+        "Continent": "AF",
+        "TLD": ".za",
+        "Languages": "zu,xh,af,nso,en_ZA,tn,st,ts,ss,ve,nr",
+        "products": {
+            "McMeal": "50.00",
+            "DomBeer": "25.00",
+            "ImpBeer": "30.00",
+            "Coke": "10.93",
+            "WineBottle": "55.00",
+            "WaterBottle": "8.84",
+            "PackSmokes": "37.00",
+            "OneWayTicket": "12.75",
+            "MovieTicket": "67.50"
+        }
+    },
+    {
+        "name": "UK",
+        "official_name_en": "United Kingdom of Great Britain and Northern Ireland",
+        "ISO3166_1_Alpha_2": "GB",       
+        "ISO4217_currency_alphabetic_code": "GBP",
+        "ISO4217_currency_country_name": "UNITED KINGDOM",
+        "ISO4217_currency_name": "Pound Sterling",
+        "Capital": "London",
+        "Continent": "EU",
+        "TLD": ".uk",
+        "Languages": "en_GB,cy_GB,gd",
+        "products": {
+            "McMeal": "5.00",
+            "DomBeer": "3.50",
+            "ImpBeer": "3.50",
+            "Coke": "1.15",
+            "WineBottle": "55.00",
+            "WaterBottle": "0.89",
+            "PackSmokes": "7.00",
+            "OneWayTicket": "12.75",
+            "MovieTicket": "67.50"
+        }
+    }
+    ,{
+        "name": "Egypt",
+        "official_name_en": "Egypt",
+        "ISO3166_1_Alpha_2": "EG",
+        "ISO4217_currency_alphabetic_code": "EGP",
+        "ISO4217_currency_country_name": "EGYPT",
+        "ISO4217_currency_name": "Egyptian Pound",
+        "Capital": "Cairo",
+        "Continent": "AF",
+        "TLD": ".eg",
+        "Languages": "ar_EG,en,fr",
+        "products": {
+            "McMeal": "8.00",
+            "DomBeer": "434.50",
+            "ImpBeer": "233.50",
+            "Coke": "1.4",
+            "WineBottle": "25.00",
+            "WaterBottle": "30.89",
+            "PackSmokes": "5.00",
+            "OneWayTicket": "82.75",
+            "MovieTicket": "67.50"
+        }
+    },
+    {
+        "name": "Spain",
+        "official_name_en": "Spain",
+        "ISO3166_1_Alpha_2": "ES",
+        "ISO4217_currency_alphabetic_code": "EUR",
+        "ISO4217_currency_country_name": "SPAIN",
+        "ISO4217_currency_name": "Euro",
+        "Capital": "Madrid",
+        "Continent": "EU",
+        "TLD": ".es",
+        "Languages": "es_ES,ca,gl,eu,oc",
+        "geonameid": "2510769"
+    },
+        {
+        "name": "Netherlands",
+        "official_name_en": "Netherlands",
+        "ISO3166_1_Alpha_2": "NL",
+        "ISO4217_currency_alphabetic_code": "EUR",
+        "ISO4217_currency_country_name": "NETHERLANDS",
+        "ISO4217_currency_name": "Euro",
+        "Capital": "Amsterdam",
+        "Continent": "EU",
+        "TLD": ".nl",
+        "Languages": "nl_NL,fy_NL"
+    },
+    {
+        "name": "Sweden",
+        "official_name_en": "Sweden",
+        "ISO3166_1_Alpha_2": "SE",
+        "ISO4217_currency_alphabetic_code": "SEK",
+        "ISO4217_currency_country_name": "SWEDEN",
+        "ISO4217_currency_name": "Swedish Krona",
+        "Capital": "Stockholm",
+        "Continent": "EU",
+        "TLD": ".se",
+        "Languages": "sv_SE,se,sma,fi_SE"
+    },
+    {
+        "name": "US",
+        "official_name_en": "United States of America",
+        "ISO3166_1_Alpha_2": "US",
+        "ISO4217_currency_alphabetic_code": "USD",
+        "ISO4217_currency_country_name": "UNITED STATES",
+        "ISO4217_currency_name": "US Dollar",
+        "Capital": "Washington",
+        "Continent": "NA",
+        "Languages": "en_US,es_US,haw,fr",
+        "geonameid": "6252001"
+    },
+    {
+        "name": "India",
+        "official_name_en": "India",
+        "ISO3166_1_Alpha_2": "IN",
+        "ISO4217_currency_alphabetic_code": "INR",
+        "ISO4217_currency_country_name": "INDIA",
+        "ISO4217_currency_name": "Indian Rupee",
+        "Capital": "New Delhi",
+        "Continent": "AS",
+        "Languages": "en_IN,hi,bn,te,mr,ta,ur,gu,kn,ml,or,pa,as,bh,sat,ks,ne,sd,kok,doi,mni,sit,sa,fr,lus,inc"
+    },
+    {
+        "name": "Mauritius",
+        "official_name_en": "Mauritius",
+        "ISO3166_1_Alpha_2": "MU",
+        "ISO4217_currency_alphabetic_code": "MUR",
+        "ISO4217_currency_country_name": "MAURITIUS",
+        "ISO4217_currency_name": "Mauritius Rupee",
+        "Capital": "Port Louis",
+        "Continent": "AF",
+        "TLD": ".mu",
+        "Languages": "en_MU,bho,fr"
+    }
+]
