@@ -24,6 +24,9 @@
   var destCurSelection = '';
   var prodSelection = '';
 
+  var baseCom = '';
+  var destCom = '';
+
   
   $(window).load(function() {
 
@@ -61,119 +64,6 @@
       
     //Country Codes
     $.getJSON('/assets/js/countryJSON/alpha-country-list.json', function(ccData) {    
-    // $.getJSON('/assets/js/countryJSON/country-codes.json', function(ccData) {
-      // $.getJSON('/assets/js/country_test.json', function(ccData) {
-        //data is the JSON string
-        // console.log('data is the JSON string= '+ccData);
-            // for (var key in ccData) {
-            //       if (ccData.hasOwnProperty(key)) {
-            //         var val = ccData[key];
-
-                    
-            //         // console.log("Val= "+val.products.McMeal);
-            //           // $.each(countryProd, function(key, val) {
-            //         if(val.hasOwnProperty('products')){
-                      
-
-            //           $('#QuantoCalc').click(function(){
-            //             // console.log(val.products);
-            //             console.log(prodSelection);
-                        
-            //           });
-                      
-            //           // console.log('hey = '+ccData[i].products.McMeal);
-            //           if(prodSelection == val.products){
-
-            //           }
-            //         }
-                    
-            //       }
-            // }
-
-//             function getObject(theObject) {
-//             var result = null;
-//             if(theObject instanceof Array) {
-//                 for(var i = 0; i < theObject.length; i++) {
-//                     result = getObject(theObject[i]);
-//                     if (result) {
-//                         break;
-//                     }   
-//                 }
-//             }
-//             else
-//             {
-//                 for(var prop in theObject) {
-//                     // console.log(prop + ': ' + theObject[prop]);
-//                     if(prop == 'products') {
-//                        console.log(theObject[prop]);
-//                         if(theObject[prop] == 'McMeal') {
-
-
-//                             return theObject;
-//                         }
-//                     }
-//                     if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
-//                         result = getObject(theObject[prop]);
-//                         if (result) {
-//                             break;
-//                         }
-//                     } 
-//                 }
-//             }
-//             return result;
-//         }
-// getObject(ccData);
-
-
-        function getObject(theObject, baseCur) {
-            var result = null;
-            if(theObject instanceof Array) {
-                for(var i = 0; i < theObject.length; i++) {
-                    result = getObject(theObject[i]);
-                    if (result) {
-                        break;
-                    }   
-                }
-            }
-            else
-            {
-                for(var prop in theObject) {
-                    // console.log(prop + ': ' + theObject[prop]);
-                    
-                      
-                    // if(prop == 'name') {
-                    //   //  console.log("McMeal "+theObject[prop].McMeal);
-                        
-                    //     return theObject;
-                        
-                    // }
-                    if(prop == 'name') {
-                      console.log("This Works ="+baseCur);
-                        if(theObject[prop] == '') {
-                            return theObject;
-                        }
-                    }
-                    // if(prop == 'products') {
-                    //    console.log("McMeal "+theObject[prop].McMeal);
-                        
-                    //     return theObject[prop];
-                        
-                    // }
-                    
-                    if(theObject[prop] instanceof Object || theObject[prop] instanceof Array) {
-                        result = getObject(theObject[prop]);
-                        if (result) {
-                            break;
-                        }
-                    } 
-                }
-            }
-            return result;
-        }
-
-
-
-
 
     // Exchange Rates
     var baseCur = "";
@@ -189,12 +79,41 @@
     $.getJSON('https://openexchangerates.org/api/latest.json?app_id=8189c190e69d471fb0b4abfba0a7c023', getExchangeRate);
     
     $('#QuantoCalc').click(function(){
-      var vv = getObject(ccData, baseCurSelection);
-      console.log('Base selcted 1: '+baseCurSelection);
-      console.log('click');
-      console.log(vv);                   
-      console.log(vv[prodSelection]);   
-                            
+      
+        for (var i = 0; i < ccData.length; i++){
+          // look for the entry with a matching `code` value
+          if (ccData[i].products){
+            // we found it
+            // obj[i].name is the matched result
+            if (ccData[i].ISO4217_currency_alphabetic_code == baseCurSelection){
+              // console.log("clickProd= "+ccData[i].products.prodSelection);
+              
+              console.log("clickProd Base= "+ccData[i].products[prodSelection]);
+              var baseCom = ccData[i].products[prodSelection];
+              document.getElementById("basePriceTxt").innerHTML = baseCom;
+              
+              
+              // console.log("clickProd= "+baseCom); 
+            }    
+          }
+        }
+
+        for (var i = 0; i < ccData.length; i++){
+          // look for the entry with a matching `code` value
+          if (ccData[i].products){
+            // we found it
+            // obj[i].name is the matched result
+            if (ccData[i].ISO4217_currency_alphabetic_code == destCurSelection){
+              // console.log("clickProd= "+ccData[i].products.prodSelection);
+              
+              console.log("clickProd Dest= "+ccData[i].products[prodSelection]);
+               var destCom = ccData[i].products[prodSelection];
+               document.getElementById("destPriceTxt").innerHTML = destCom;
+               document.getElementById("destPriceTxtEX").innerHTML = destCom;
+              //  console.log("clickProd= "+destCom);
+            } 
+          }
+        }
 
         var dVbRate = fx(1).from(baseCurSelection).to(destCurSelection);
 
@@ -203,6 +122,29 @@
         document.getElementById("basVdestTxt").innerHTML = dVbRate.toFixed(5);
         document.getElementById("destVbasTxt").innerHTML = dVb2Rate.toFixed(5);
 
+        
+        //percentage
+        var v1 = (destCom*dVb2Rate).toFixed(2);
+        var v2 = baseCom;
+        var diffPercent = ((v2 / v1) * 100).toFixed(2);
+        // document.write(v2+" is "+diffPercent+"% of "+v1);
+
+        document.getElementById("finalCalcPer").innerHTML = diffPercent;
+        document.getElementById("pricerangeTxt").innerHTML = v2+" is "+diffPercent+"% of "+v1;
+
+
+        //cash
+        
+        var priceDiff = (destCom*dVb2Rate).toFixed(2) - baseCom;
+
+     
+     document.getElementById("finalCalcCash").innerHTML = priceDiff;
+
+        document.getElementById("basePricePlusExhange").innerHTML = (destCom*dVb2Rate).toFixed(2)+"~";
+
+        //convertion rate checks
+        console.log("pricedif "+priceDiff);
+        console.log(destCom+" * "+dVb2Rate.toFixed(5)+" = "+baseCom*dVb2Rate.toFixed(5));
         console.log("Selection Exchange: "+baseCurSelection+"1 = "+destCurSelection+" "+dVbRate.toFixed(5));
     });                       
     // console.log(getObject(ccData));

@@ -33,29 +33,29 @@
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               
                 <!--Text-->
-                <label for="">Price</label>
-                  <p>Loerm</p>
-                <label for="">Range</label>
-                <p>sprint 4</p>
-                <label for="">Price in Local Currency</label>
-                  <p>Loerm</p>
-                <label for="">Price in [LOCAL]</label>
-                  <p>Loerm</p>
-                <small>forgien price = local price in local currency</small>
+                <label for="">Price in {{myForm.controls.destinationCurrency.value}}</label>
+                  <p id="destPriceTxt">Loerm</p>
+                <!--<label for="">Range</label>
+                <p id="range">sprint 4</p>-->
+                <label for="">Price in {{myForm.controls.baseCurrency.value}} </label>
+                  <p id="basePriceTxt">Loerm</p>
+                <small><span id="destPriceTxtEX"></span> [ {{myForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{myForm.controls.baseCurrency.value}} ] </small>
                 <hr>
                 <label for="">Exchange Rate</label>
                 <p>
-                  <small> {{myForm.controls.baseCurrency.value}} vs {{myForm.controls.destinationCurrency.value}} = <span id="basVdestTxt"></span></small>
-                  <br>
                   <small>{{myForm.controls.destinationCurrency.value}} vs {{myForm.controls.baseCurrency.value}} = <span id="destVbasTxt"></span></small>
+                   <br>
+                  <small> {{myForm.controls.baseCurrency.value}} vs {{myForm.controls.destinationCurrency.value}} = <span id="basVdestTxt"></span></small>
                 </p>
                 
                 <small><i class="fa fa-refresh" aria-hidden="true"></i> The rates are updated daily around 4PM CET.</small>
                 <hr>
                 <div class="well">
-                  <span class="finalCalc">64%</span>
+                  <span id="finalCalcPer"></span> %
                   <br>
-                  <small>Product is Less/More Expansive</small>
+                  <span id="finalCalcCash"></span> {{myForm.controls.baseCurrency.value}}
+                  <br>
+                  <small id="pricerangeTxt">Product is Less/More Expansive</small>
                 </div>
 
             </div>

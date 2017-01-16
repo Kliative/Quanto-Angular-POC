@@ -138,6 +138,17 @@
         "Capital": "Port Louis",
         "Continent": "AF",
         "TLD": ".mu",
-        "Languages": "en_MU,bho,fr"
+        "Languages": "en_MU,bho,fr",
+        "products": {
+            "McMeal": "200.00",
+            "DomBeer": "70.00",
+            "ImpBeer": "75.00",
+            "Coke": "24.97",
+            "WineBottle": "300.00",
+            "WaterBottle": "24.62",
+            "PackSmokes": "157.50",
+            "OneWayTicket": "32.00",
+            "MovieTicket": "250.00"
+        }
     }
 ]
