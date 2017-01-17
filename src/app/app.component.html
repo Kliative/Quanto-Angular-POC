@@ -25,12 +25,12 @@
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
       <div class="well wellColor animated fadeIn"> 
 <!---->
-<!--<span *ngIf="myForm.controls.baseCurrency.value == 'ZA'">-->
+<span id="quantoDetSect">
 <!---->
         <!--[INFO SECTION]-->
         <div class="row">
           <div class="info">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
               
                 <!--Text-->
                 <label for="">Price in {{myForm.controls.destinationCurrency.value}}</label>
@@ -59,20 +59,44 @@
                 </div>
 
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <!--Image-->
-                <label for="">Image/icon Info</label>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+              
+              <div class="iconBox" id="McMeal">
+                <img src="/assets/img/McMeal.jpg" alt="">
+              </div>
+              <div class="iconBox" id="DomBeer">
+                <img src="/assets/img/DomBeer.jpg" alt="">
+              </div>
+              <div class="iconBox" id="ImpBeer">
+                <img src="/assets/img/ImpBeer.jpg" alt="">
+              </div>
+              <div class="iconBox" id="WineBottle">
+                <img src="/assets/img/Wine.jpg" alt="">
+              </div>
+              <div class="iconBox" id="Coke">
+                <img src="/assets/img/Coke.jpg" alt="">
+              </div>
+              <!--<div class="iconBox" id="PackSmokes">
+                <img src="/assets/img/.jpg" alt="">
+              </div>
+              <div class="iconBox" id="OneWayTicket">
+                <img src="/assets/img/.jpg" alt="">
+              </div>
+              <div class="iconBox" id="MovieTicket">
+                <img src="/assets/img/.jpg" alt="">
+              </div>-->
+                
             </div>
           </div>
         </div>
 <hr>
 
 <!---->
-<!--</span>-->
+</span>
 <!---->
  <!-- [commodity SECTION]-->
         <div class="row">
-          <div class="container">
+          
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <select class="form-control" id="prodSel" formControlName="product">
                   <option value="">Select Commodity...</option>
@@ -86,13 +110,13 @@
                   <option value="MovieTicket">Movie Tickt (1 person)</option>
                 </select>
             </div>
-          </div>
+          
         </div>
 
         <hr>  
         <!--[currency SECTION]-->
         <div class="row">
-          <div class="container">
+          
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <select class="form-control" id="baseCurSel" formControlName="baseCurrency">
                 <option value="">Select Base Currency...</option>
@@ -108,16 +132,16 @@
               </select>
             </div>
           </div>
-        </div>
+        
       </div>
 
 <!--<button type="button" id="calculateBtn" class="btn btn-primary">Test</button>-->
-<a id="calculateBtn" class="btn btn-danger">Quanto</a>
-<a id="QuantoCalc" class="btn btn-primary">QuantoCalc</a>
 
-            <div class="margin-20">
+<a id="QuantoCalc" style="width:100%;" class="btn btn-primary">QuantoCalc</a>
+
+            <!--<div class="margin-20">
               <pre>myForm value: <br>{{myForm.value | json}}</pre>
-            </div>
+            </div>-->
     </div>
 <div class="col-md-2 col-lg-2"></div>
 
