@@ -1,0 +1,87 @@
+[
+    {
+        "name": "South Africa",
+        "official_name_en": "South Africa",
+        "ISO3166_1_Alpha_2": "ZA",
+        "ISO4217_currency_alphabetic_code": "ZAR",
+        "ISO4217_currency_country_name": "SOUTH AFRICA",
+        "ISO4217_currency_name": "Rand",
+        "ISO4217_currency_symbol": "R",
+        "Capital": "Pretoria",
+        "Continent": "AF",
+        "TLD": ".za",
+        "Languages": "zu,xh,af,nso,en_ZA,tn,st,ts,ss,ve,nr",
+        "products": {
+            "McMeal": {
+                "p":{
+                    "p":"50.00",
+                    "l":"45.00",
+                    "h":"55.00"
+                }
+            },
+            "DomBeer": "25.00",
+            "ImpBeer": "30.00",
+            "Coke": "10.93",
+            "WineBottle": "55.00",
+            "WaterBottle": "8.84",
+            "PackSmokes": "37.00",
+            "OneWayTicket": "12.75",
+            "MovieTicket": "67.50"
+        }
+    },
+    {
+        "name": "UK",
+        "official_name_en": "United Kingdom of Great Britain and Northern Ireland",
+        "ISO3166_1_Alpha_2": "GB",       
+        "ISO4217_currency_alphabetic_code": "GBP",
+        "ISO4217_currency_country_name": "UNITED KINGDOM",
+        "ISO4217_currency_name": "Pound Sterling",
+        "ISO4217_currency_symbol": "&pound;",
+        "Capital": "London",
+        "Continent": "EU",
+        "TLD": ".uk",
+        "Languages": "en_GB,cy_GB,gd",
+        "products": {
+            "McMeal": {
+                "p":"5.00",
+                "l":"4.50",
+                "h":"5.50"
+            },
+            "DomBeer": "3.50",
+            "ImpBeer": "3.50",
+            "Coke": "1.15",
+            "WineBottle": "55.00",
+            "WaterBottle": "0.89",
+            "PackSmokes": "7.00",
+            "OneWayTicket": "12.75",
+            "MovieTicket": "67.50"
+        }
+    },
+    {
+        "name": "Mauritius",
+        "official_name_en": "Mauritius",
+        "ISO3166_1_Alpha_2": "MU",
+        "ISO4217_currency_alphabetic_code": "MUR",
+        "ISO4217_currency_country_name": "MAURITIUS",
+        "ISO4217_currency_name": "Mauritius Rupee",
+        "ISO4217_currency_symbol": "Ɍs",
+        "Capital": "Port Louis",
+        "Continent": "AF",
+        "Languages": "en_MU,bho,fr",
+        "products": {
+            "McMeal": {
+                "p":"200.00",
+                "l":"175.00",
+                "h":"225.00"
+            },
+            "DomBeer": "70.00",
+            "ImpBeer": "75.00",
+            "Coke": "24.97",
+            "WineBottle": "300.00",
+            "WaterBottle": "24.62",
+            "PackSmokes": "157.50",
+            "OneWayTicket": "32.00",
+            "MovieTicket": "250.00"
+        }
+    }
+]

@@ -1,70 +1,53 @@
-<div id="loader-wrapper" class="animate fadeOut">
-  <div id="loader"></div>
-  
-  <div class="loader-section section-left"></div>
-  <div class="loader-section section-right"></div>
-  
-</div>
-
-<form [formGroup]="sendDataForm" novalidate (ngSubmit)="save(sendDataForm.value, sendDataForm.valid)">
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
-      <div class="well wellColor animated fadeIn"> 
-
-        <!--<input type="text" class="form-control" id="product" #product>-->
-        <select class="form-control" id="sDProdSel" formControlName="product" #product>
-                  <option value="">Select Product...</option>
-                  <option value="McMeal">McMeal at McDonalds</option>
-                  <option value="DomBeer">Domestic Beer</option>
-                  <option value="ImpBeer">Imported Beer</option>
-                  <option value="Coke">Coke</option>
-                  <option value="WineBottle">Wine Bottle</option>
-                  <option value="PackSmokes">Pack Smokes</option>
-                  <option value="OneWayTicket">One Way Travel Ticket</option>
-                  <option value="MovieTicket">Movie Tickt (1 person)</option>
-        </select>
-        <input type="text" class="form-control" formControlName="price" id="price" #price>
-        <select class="form-control" formControlName="range" id="range" #range>
-                  <option value="">Select Range...</option>
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-        </select>
-        <!--<input type="text" class="form-control" formControlName="location" id="location" #location>-->
-
-        <!--<button class="btn btn-success" type="button" (click)="onSend(product.value, price.value, range.value)">Send</button>-->
-        <button class="btn btn-success" type="button" (click)="onSend(sendDataForm.value)">Send</button>
-        <hr>
-        <button class="btn btn-primary" type="button" (click)="onGetData(username.value, number.value)">GeT Data</button>
-
-        <!--<ul>
-          <li *ngFor="let item of items">{{ item.email }}</li>
-        </ul>-->
-        <hr>
-        <p>{{ asyncString | async }}</p>
-      </div>
- </div>   
-
-
-</form>
-
-  <div class="margin-20">
-              <pre>myForm value: <br>{{sendDataForm.value | json}}</pre>
-            </div>
-
+<style>
+  .wellColor{
+    
+    background-color: #FFBA00;
+  }
+  .well {
+      padding: 1em;
+      min-height: 20px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      -webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  }
+  .finalCalc {
+    font-size:4em;
+  }
+  .info p { 
+    color: #fff;
+  }
+</style>
 
   <!---->
   <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm.value, myForm.valid)">
 <div class="col-md-2 col-lg-2"></div>
-
-    
-
-
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
       <div class="well wellColor animated fadeIn"> 
 <!---->
 <span id="quantoDetSect">
 <!---->
-       <!--[INFO SECTION]-->
+<style>
+  #destPriceTxt,
+  #basePriceTxt {
+    font-size: 5rem;
+  }
+  #destCurrSymbol,
+  #baseCurrSymbol{
+    color: #000;
+    font-size: 5rem;
+  }
+  #finalDetailWell {
+    font-size: 3rem;
+  }
+  #finalDetailWell small {
+    font-size: 1rem;
+  }
+  #finalCalcPer {
+    opacity: 0;
+  }
+</style>
+        <!--[INFO SECTION]-->
         <div class="row">
           <div class="info">
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -74,12 +57,8 @@
                   <p><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
                   <small><span id="destPriceTxtEX"></span> [ {{myForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{myForm.controls.baseCurrency.value}} ] </small>
                   <hr>
-                <div class="well" id="finalDetailWell">
-                   <span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span>
-                   <br>
-                  <small id="finalCalcPer">Product is Less/More Expansive</small>
-                </div>
-<hr>
+                <!--<label for="">Range</label>
+                <p id="range">sprint 4</p>-->
                 <label for="">Price in <span id="baseCoName"></span> </label>
                  <p><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span></p>
                
@@ -91,8 +70,17 @@
                   <small> {{myForm.controls.baseCurrency.value}} vs {{myForm.controls.destinationCurrency.value}} = <span id="basVdestTxt"></span></small>
                 </p>
                 
-                <small><i class="fa fa-refresh" aria-hidden="true"></i> The rates are updated hourly.</small>
-             
+                <small><i class="fa fa-refresh" aria-hidden="true"></i> The rates are updated daily around 4PM CET.</small>
+                <hr>
+                <div class="well" id="finalDetailWell">
+                  <span id="finalCalcPer"></span>
+                  <br>
+                   <span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span>
+                   <br> 
+                  <br>
+                  <small id="pricerangeTxt">Product is Less/More Expansive</small>
+                </div>
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
               
@@ -134,7 +122,7 @@
           
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <select class="form-control" id="prodSel" formControlName="product">
-                  <option value="">Select Product...</option>
+                  <option value="">Select Commodity...</option>
                   <option value="McMeal">McMeal at McDonalds</option>
                   <option value="DomBeer">Domestic Beer</option>
                   <option value="ImpBeer">Imported Beer</option>
@@ -148,40 +136,31 @@
           
         </div>
 
-        <!--<hr>  -->
+        <hr>  
         <!--[currency SECTION]-->
         <div class="row">
           
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <select class="form-control" id="baseCurSel" formControlName="baseCurrency">
                 <option value="">Select Base Currency...</option>
                 <option id="currentLocOpt"></option>
               </select>
-              <!--<br>-->
-              <!--<label>Your current location is:</label> <i id="userLoc"></i>-->
+              <label>Your current location is:</label> <i id="userLoc"></i>
+
             </div>
-      </div>
-
-      <!--<hr>  -->
-
-
-      <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
               <select class="form-control" id="destCurSel" formControlName="destinationCurrency"> 
                 <option value="">Select Destination Currency...</option>
                 
               </select>
             </div>
-
-
-        </div>
-        <!--<hr>-->
-        <a id="QuantoCalc" style="width:100%;" class="btn btn-danger">Quanto</a>
+          </div>
+        
       </div>
 
 <!--<button type="button" id="calculateBtn" class="btn btn-primary">Test</button>-->
 
-
+<a id="QuantoCalc" style="width:100%;" class="btn btn-primary">QuantoCalc</a>
 
             <!--<div class="margin-20">
               <pre>myForm value: <br>{{myForm.value | json}}</pre>
