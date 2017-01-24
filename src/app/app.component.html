@@ -22,25 +22,30 @@
                   <option value="OneWayTicket">One Way Travel Ticket</option>
                   <option value="MovieTicket">Movie Tickt (1 person)</option>
         </select>
-        <input type="text" class="form-control" formControlName="price" id="price" #price>
+        <input type="text" class="form-control" formControlName="price" id="price" placeholder="Price: eg. $ 40.00" #price>
         <select class="form-control" formControlName="range" id="range" #range>
                   <option value="">Select Range...</option>
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
         </select>
+        <select class="form-control" formControlName="location" id="postCountrySel" #location>
+                  <option value="">Select Location...</option>
+                  <option id="postCountry"></option>
+        </select>
         <!--<input type="text" class="form-control" formControlName="location" id="location" #location>-->
 
         <!--<button class="btn btn-success" type="button" (click)="onSend(product.value, price.value, range.value)">Send</button>-->
+        
         <button class="btn btn-success" type="button" (click)="onSend(sendDataForm.value)">Send</button>
-        <hr>
+        <!--<hr>
         <button class="btn btn-primary" type="button" (click)="onGetData(username.value, number.value)">GeT Data</button>
 
-        <!--<ul>
+        <ul>
           <li *ngFor="let item of items">{{ item.email }}</li>
-        </ul>-->
+        </ul>
         <hr>
-        <p>{{ asyncString | async }}</p>
+        <p>{{ asyncString | async }}</p>-->
       </div>
  </div>   
 

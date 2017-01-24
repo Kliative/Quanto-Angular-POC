@@ -14,26 +14,32 @@ export class AppComponent implements OnInit {
     items: any[];
     public date;
     asyncString = this.httpService.getData();
-
+    private city;
   public myForm: FormGroup;
   public sendDataForm: FormGroup;
 
     public submitted: boolean;
     public events: any[] = [];
 
-    constructor(private _fb: FormBuilder, private _sFb:FormBuilder, private httpService: HttpService) { }
-    
+    constructor(private _fb: FormBuilder, private _sFb:FormBuilder, private httpService: HttpService) {
+        this.httpService.getCurrentLocation()
+            .subscribe(
+                (data:any) => {
+                    this.city = data.city;
+                    
+                }
+            );
+     }
+        
     ngOnInit() {
         this.date = new Date();
-        this.httpService.getData()
-            .subscribe(
-                (data:any) => console.log(data)
-            );
-
+        console.log(this.city);
+        
         this.sendDataForm = this._sFb.group({
             product: '',
             price: '',
             range: '',
+            location: '',
             timeStamp: this.date
         });
         this.myForm = this._fb.group({
@@ -60,6 +66,9 @@ export class AppComponent implements OnInit {
                 this.items = myArray;
             }
         );
+    }
+    onCity(){
+        
     }
 
     save(model: User, isValid: boolean) {
