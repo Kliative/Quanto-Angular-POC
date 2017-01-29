@@ -6,11 +6,11 @@ import { Observable } from 'rxjs/Observable';
 export class HttpService {
   
   constructor(private http: Http) { }
-
+// get single json object
   getData() {
     return this.http.get('https://quantotest-8a1ec.firebaseio.com/price.json').map((response: Response) => response.json());
   }
-
+// upload data
   sendData(user: any){
     const body = JSON.stringify(user);
     const headers = new Headers();
@@ -32,5 +32,7 @@ export class HttpService {
             return Observable.throw(error.json());
         });
     }
+
+    
 
 }

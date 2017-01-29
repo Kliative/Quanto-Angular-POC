@@ -234,8 +234,12 @@ $(window).load(function() {
                           document.getElementById("currentLocOpt").innerHTML = 'Current Location: '+location.country_name+' ('+location.country_code+')';
                           $("#location").text(location.country_name+' '+location.country_code);
                           document.getElementById("currentLocOpt").value = ccData[i].ISO4217_currency_alphabetic_code;
+
                           document.getElementById("postCountry").innerHTML = 'Current Location: '+location.country_name+' ('+location.country_code+')';
                           document.getElementById("postCountry").value = ccData[i].ISO3166_1_Alpha_2;
+
+                          document.getElementById("listCurrentLocOpt").innerHTML = 'Current Location: '+location.country_name+' ('+location.country_code+')';
+                          document.getElementById("listCurrentLocOpt").value = ccData[i].ISO3166_1_Alpha_2;
                             // console.log("Some Dats: "+ccData[i].ISO4217_currency_alphabetic_code);
                         }
                         
@@ -255,11 +259,9 @@ $(window).load(function() {
                         // console.log("countryProd "+[i]+" = "+countryProd);
                         // console.log("countryProd length"+[i]+" = "+countryProd.length);
 
+
+                        //QuantoCalc
                         $("#baseCurSel").append($('<option>', {
-                          value: countryCurrencyCode,
-                          text: countryName
-                        }));
-                        $("#postCountrySel").append($('<option>', {
                           value: countryCurrencyCode,
                           text: countryName
                         }));
@@ -267,6 +269,21 @@ $(window).load(function() {
                             value: countryCurrencyCode,
                             text: countryName
                         }));
+                        // Posting
+                        $("#postCountrySel").append($('<option>', {
+                          value: countryCurrencyCode,
+                          text: countryName
+                        }));
+                        //Grocery List
+                        $("#listBaseCurSel").append($('<option>', {
+                          value: countryCurrencyCode,
+                          text: countryName
+                        }));
+                        $("#listDestCurSel").append($('<option>', {
+                            value: countryCurrencyCode,
+                            text: countryName
+                        }));
+
                         
                     }
                 });

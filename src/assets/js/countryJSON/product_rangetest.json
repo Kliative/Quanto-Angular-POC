@@ -12,13 +12,7 @@
         "TLD": ".za",
         "Languages": "zu,xh,af,nso,en_ZA,tn,st,ts,ss,ve,nr",
         "products": {
-            "McMeal": {
-                "p":{
-                    "p":"50.00",
-                    "l":"45.00",
-                    "h":"55.00"
-                }
-            },
+            "McMeal": "50.00",
             "DomBeer": "25.00",
             "ImpBeer": "30.00",
             "Coke": "10.93",
@@ -42,11 +36,7 @@
         "TLD": ".uk",
         "Languages": "en_GB,cy_GB,gd",
         "products": {
-            "McMeal": {
-                "p":"5.00",
-                "l":"4.50",
-                "h":"5.50"
-            },
+            "McMeal": "5.00",
             "DomBeer": "3.50",
             "ImpBeer": "3.50",
             "Coke": "1.15",

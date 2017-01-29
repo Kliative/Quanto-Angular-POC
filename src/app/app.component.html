@@ -6,6 +6,9 @@
   
 </div>
 
+<product-search-root></product-search-root>
+
+
 <form [formGroup]="sendDataForm" novalidate (ngSubmit)="save(sendDataForm.value, sendDataForm.valid)">
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
       <div class="well wellColor animated fadeIn"> 
@@ -52,9 +55,9 @@
 
 </form>
 
-  <div class="margin-20">
+  <!--<div class="margin-20">
               <pre>myForm value: <br>{{sendDataForm.value | json}}</pre>
-            </div>
+            </div>-->
 
 
   <!---->

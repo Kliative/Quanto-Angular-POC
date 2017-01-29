@@ -14,9 +14,11 @@ export class AppComponent implements OnInit {
     items: any[];
     public date;
     asyncString = this.httpService.getData();
-    private city;
+    public city;
+  
   public myForm: FormGroup;
   public sendDataForm: FormGroup;
+
 
     public submitted: boolean;
     public events: any[] = [];
@@ -67,7 +69,7 @@ export class AppComponent implements OnInit {
             }
         );
     }
-    onCity(){
+    onAddProd(){
         
     }
 
