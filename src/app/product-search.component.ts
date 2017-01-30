@@ -99,16 +99,14 @@ onAddProd(form: FormGroup){
                     // for (var item of data) {
                         for (var i = 0; i < data.length; i++) { 
                         // console.log(data[i]);
-                        if(data[i].ISO4217_currency_alphabetic_code ==  this.listDataForm.controls['listBaseCurrency'].value){
-                            // console.log(data[i]);
-                            var text =  this.listDataForm.controls['product'].value
+                           
+
+                        if(data[i].ISO4217_currency_alphabetic_code ==  this.listDataForm.controls['listDestinationCurrency'].value){
+
                             var country = data[i];
-                                
-                            console.log(country);
+                           
+                            const productItem = new ProductItem(this.listDataForm.controls['product'].value, country.products[this.listDataForm.controls['product'].value]);
 
-                            const productItem = new ProductItem(country.name, country.products.text);
-
-                            // console.log(productItem);
                             this._productService.addProductItem(productItem);
                         }
                     }
