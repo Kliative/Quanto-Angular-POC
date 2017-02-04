@@ -8,6 +8,7 @@ import {ProductListComponent} from "./product-list.component";
 import {ProductItemComponent} from "./product-item.component";
 import {ProductSearchComponent} from "./product-search.component";
 
+import { ExchangeService } from './exchange.service'
 import { ProductService } from './product.service';
 
 @NgModule({
@@ -23,7 +24,7 @@ import { ProductService } from './product.service';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers:[ProductService],
+  providers:[ProductService, ExchangeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

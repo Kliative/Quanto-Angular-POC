@@ -65,6 +65,7 @@ $(window).load(function() {
     var baseCur = "";
     var destCur = "";
     
+    
     var getExchangeRate = function(data) {
       fx.base = "USD";
       fx.rates = data.rates;
@@ -89,26 +90,26 @@ $(window).load(function() {
                 // console.log("clickProd= "+ccData[i].products.prodSelection);
                 
                     // console.log("clickProd Base= "+ccData[i].products[prodSelection]);
-                    var baseCom = ccData[i].products[prodSelection].h;
+                    var baseCom = ccData[i].products[prodSelection]['norm']['p'];
                     document.getElementById("basePriceTxt").innerHTML = baseCom;
                     document.getElementById("baseCoName").innerHTML = ccData[i].name;
                     $("#baseCurrSymbol").html(ccData[i].ISO4217_currency_symbol);
                     $("#baseCurrSymbolDetail").html(ccData[i].ISO4217_currency_symbol);
                     // console.log("baseCurrSymbol "+ccData[i].ISO4217_currency_symbol);
-                    console.log("baseCom "+baseCom);
+                    // console.log("baseCom "+baseCom);
                 }    
             
                 if (ccData[i].ISO4217_currency_alphabetic_code == destCurSelection){
 
                     // console.log("clickProd Dest= "+ccData[i].products[prodSelection]);
-                    var destCom = ccData[i].products[prodSelection].h;
+                    var destCom = ccData[i].products[prodSelection]['norm']['p'];
                     document.getElementById("destPriceTxt").innerHTML = destCom;
                     document.getElementById("destPriceTxtEX").innerHTML = destCom;
                     document.getElementById("destCoName").innerHTML = ccData[i].name;
                     $("#destCurrSymbol").html(ccData[i].ISO4217_currency_symbol);
                     
                     // console.log("destCurrSymbol "+ccData[i].ISO4217_currency_symbol);
-                    console.log("destCom "+destCom);
+                    // console.log("destCom "+destCom);
                 } 
 
             }
