@@ -87,7 +87,6 @@ $(window).load(function() {
                 // obj[i].name is the matched result
                 if (ccData[i].ISO4217_currency_alphabetic_code == baseCurSelection){
                 // console.log("clickProd= "+ccData[i].products.prodSelection);
-                
                     // console.log("clickProd Base= "+ccData[i].products[prodSelection]);
                     var baseCom = ccData[i].products[prodSelection]['norm']['p'];
                     document.getElementById("basePriceTxt").innerHTML = baseCom;

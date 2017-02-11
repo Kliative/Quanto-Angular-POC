@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductItem } from "./product-item";
 import { ProductBaseItem } from "./product-base-item";
-import { ProductService } from "./product.service";
+import { ProductService } from "../services/product.service";
 @Component({
     selector: 'product-list',
     template: `

@@ -2,11 +2,11 @@ import {Injectable} from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { ProductItem } from './product-item';
-import { ProductBaseItem } from './product-base-item';
+import { ProductItem } from '../product-search/product-item';
+import { ProductBaseItem } from '../product-search/product-base-item';
 
-import { PRODUCT_ITEMS } from './product.data';
-import { PRODUCT_BASE_ITEMS } from './product-base.data';
+import { PRODUCT_ITEMS } from '../product-search/product.data';
+import { PRODUCT_BASE_ITEMS } from '../product-search/product-base.data';
 
 @Injectable()
 export class ProductService {

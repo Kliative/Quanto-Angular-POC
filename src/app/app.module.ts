@@ -4,13 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {ProductListComponent} from "./product-list.component";
-import {ProductItemComponent} from "./product-item.component";
-import {ProductBaseItemComponent} from "./product-base-item.component";
-import {ProductSearchComponent} from "./product-search.component";
+import {ProductListComponent} from "./product-search/product-list.component";
+import {ProductItemComponent} from "./product-search/product-item.component";
+import {ProductBaseItemComponent} from "./product-search/product-base-item.component";
+import {ProductSearchComponent} from "./product-search/product-search.component";
 
-import { ExchangeService } from './exchange.service'
-import { ProductService } from './product.service';
+import { ExchangeService } from './services/exchange.service'
+import { ProductService } from './services/product.service';
+import { ProductSendComponent } from './product-send/product-send.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductService } from './product.service';
     ProductListComponent,
     ProductItemComponent,
     ProductBaseItemComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
+    ProductSendComponent
   ],
   imports: [
     BrowserModule,

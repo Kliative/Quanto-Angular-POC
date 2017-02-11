@@ -1,0 +1,52 @@
+<form [formGroup]="sendDataForm" novalidate (ngSubmit)="save(sendDataForm.value, sendDataForm.valid)">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
+      <div class="well wellColor animated fadeIn"> 
+
+        <!--<input type="text" class="form-control" id="product" #product>-->
+        <select class="form-control" id="sDProdSel" formControlName="product" #product>
+                  <option value="">Select Product...</option>
+                  <option value="McMeal">McMeal at McDonalds</option>
+                  <option value="DomBeer">Domestic Beer</option>
+                  <option value="ImpBeer">Imported Beer</option>
+                  <option value="Coke">Coke</option>
+                  <option value="WineBottle">Wine Bottle</option>
+                  <option value="PackSmokes">Pack Smokes</option>
+                  <option value="OneWayTicket">One Way Travel Ticket</option>
+                  <option value="MovieTicket">Movie Tickt (1 person)</option>
+        </select>
+        <input type="text" class="form-control" formControlName="price" id="price" placeholder="Price: eg. $ 40.00" #price>
+        <select class="form-control" formControlName="range" id="range" #range>
+                  <option value="">Select Range...</option>
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+        </select>
+        <select class="form-control" formControlName="location" id="postCountrySel" #location>
+                  <option value="">Select Location...</option>
+                  <option id="postCountry"></option>
+        </select>
+        <!--<input type="text" class="form-control" formControlName="location" id="location" #location>-->
+
+        <!--<button class="btn btn-success" type="button" (click)="onSend(product.value, price.value, range.value)">Send</button>-->
+        
+        <button class="btn btn-success" type="button" (click)="onSend(sendDataForm.value)">Send</button>
+        <!--<hr>
+        <button class="btn btn-primary" type="button" (click)="onGetData(username.value, number.value)">GeT Data</button>
+
+        <ul>
+          <li *ngFor="let item of items">{{ item.email }}</li>
+        </ul>
+        <hr>
+        <p>{{ asyncString | async }}</p>-->
+      </div>
+ </div>   
+
+
+</form>
+
+  <!--<div class="margin-20">
+              <pre>myForm value: <br>{{sendDataForm.value | json}}</pre>
+            </div>-->
+
+
+  <!---->

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { ProductService } from './product.service'
-import { ExchangeService } from './exchange.service'
+import { ProductService } from '../services/product.service'
+import { ExchangeService } from '../services/exchange.service'
 
 import { ProductItem } from './product-item';
 import { ProductBaseItem } from './product-base-item';
