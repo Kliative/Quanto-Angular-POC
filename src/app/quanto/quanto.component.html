@@ -1,0 +1,133 @@
+<form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
+
+
+<span id="quantoDetSect">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
+          <div class="well wellColor animated fadeIn"> 
+    <!---->
+          <!--[INFO SECTION]-->
+            <div class="row">
+              <div class="info">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  
+                    <!--Text-->
+                    <label for="">Price in <span id="destCoName"></span></label>
+                      <p><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
+                      <small><span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] </small>
+                      <hr>
+                    <div class="well" id="finalDetailWell">
+                      <span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span>
+                      <br>
+                      <small id="finalCalcPer">Product is Less/More Expansive</small>
+                    </div>
+    <hr>
+                    <label for="">Price in <span id="baseCoName"></span> </label>
+                    <p><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span></p>
+                  
+                    <hr>
+                    <label for="">Exchange Rate</label>
+                    <p>
+                      <small>1 {{quantoForm.controls.destinationCurrency.value}} = <span id="destVbasTxt"></span> {{quantoForm.controls.baseCurrency.value}} </small>
+                      <br>
+                      <small>1 {{quantoForm.controls.baseCurrency.value}} =  = <span id="basVdestTxt"></span> {{quantoForm.controls.destinationCurrency.value}}</small>
+                    </p>
+                    
+                    <small><i class="fa fa-refresh" aria-hidden="true"></i> The rates are updated hourly.</small>
+                
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                  
+                  <div class="iconBox" id="McMeal">
+                    <img src="/assets/img/McMeal.jpg" alt="">
+                  </div>
+                  <div class="iconBox" id="DomBeer">
+                    <img src="/assets/img/DomBeer.jpg" alt="">
+                  </div>
+                  <div class="iconBox" id="ImpBeer">
+                    <img src="/assets/img/ImpBeer.jpg" alt="">
+                  </div>
+                  <div class="iconBox" id="WineBottle">
+                    <img src="/assets/img/Wine.jpg" alt="">
+                  </div>
+                  <div class="iconBox" id="Coke">
+                    <img src="/assets/img/Coke.jpg" alt="">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <hr>
+
+            <!---->
+        
+
+          </div>
+    </div>
+</span>
+
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
+      <div class="well wellColor animated fadeIn"> 
+<!---->
+
+        <!---->
+        <!-- [Product SECTION]-->
+        <div class="row">
+          
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <select class="form-control" id="prodSel" formControlName="product">
+                  <option value="">Select Product...</option>
+                  <option value="McMeal">McMeal at McDonalds</option>
+                  <option value="DomBeer">Domestic Beer</option>
+                  <option value="ImpBeer">Imported Beer</option>
+                  <option value="Coke">Coke</option>
+                  <option value="WineBottle">Wine Bottle</option>
+                  <option value="PackSmokes">Pack Smokes</option>
+                  <option value="OneWayTicket">One Way Travel Ticket</option>
+                  <option value="MovieTicket">Movie Tickt (1 person)</option>
+                </select>
+            </div>
+          
+        </div>
+
+        <!--<hr>  -->
+        <!--[currency SECTION]-->
+        <div class="row">
+          
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <select class="form-control" id="baseCurSel" formControlName="baseCurrency">
+                <option value="">Select Base Currency...</option>
+                
+              </select>
+              <!--<br>-->
+              <!--<label>Your current location is:</label> <i id="userLoc"></i>-->
+            </div>
+      </div>
+
+      <!--<hr>  -->
+
+
+      <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <select class="form-control" id="destCurSel" formControlName="destinationCurrency"> 
+                <option value="">Select Destination Currency...</option>
+                
+              </select>
+            </div>
+
+
+        </div>
+        <!--<hr>-->
+        <button type="submit" id="QuantoCalc" style="width:100%;" class="btn btn-danger">Quanto</button>
+      </div>
+
+<!--< id="calculateBtn" class="btn btn-primary">Test</button>-->
+
+ <!--<div class="margin-20">
+              <pre>quantoForm value: <br>{{quantoForm.value | json}}</pre>
+</div>-->
+
+           
+    </div>
+
+  </form>
+

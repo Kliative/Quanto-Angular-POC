@@ -12,6 +12,7 @@ import {ProductSearchComponent} from "./product-search/product-search.component"
 import { ExchangeService } from './services/exchange.service'
 import { ProductService } from './services/product.service';
 import { ProductSendComponent } from './product-send/product-send.component';
+import { QuantoComponent } from './quanto/quanto.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProductSendComponent } from './product-send/product-send.component';
     ProductItemComponent,
     ProductBaseItemComponent,
     ProductSearchComponent,
-    ProductSendComponent
+    ProductSendComponent,
+    QuantoComponent
   ],
   imports: [
     BrowserModule,

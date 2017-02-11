@@ -15,6 +15,7 @@ import { PRODUCT_ITEMS } from './product.data';
 })
 
 export class ProductSearchComponent implements OnInit {
+     
      public listDataForm: FormGroup;
 
      constructor (private _sFb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService){}

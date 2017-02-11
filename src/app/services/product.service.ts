@@ -24,6 +24,7 @@ export class ProductService {
     addProductItem(productItem: ProductItem){
         PRODUCT_ITEMS.push(productItem);
     }
+    
     addProductBaseItem(productBaseItem: ProductBaseItem){
         PRODUCT_BASE_ITEMS.push(productBaseItem);
     }

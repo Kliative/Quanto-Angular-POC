@@ -11,26 +11,14 @@ import { HttpService} from './services/http.service';
 })
 export class AppComponent implements OnInit {
     items: any[];
-    public date;
-    asyncString = this.httpService.getData();
-    public city;
-  
-  public myForm: FormGroup;
-  
+    
 
 
-    public submitted: boolean;
-    public events: any[] = [];
-
-    constructor(private _fb: FormBuilder, private httpService: HttpService) {}
+    constructor( private httpService: HttpService) {}
         
     ngOnInit() {
         
-        this.myForm = this._fb.group({
-            product: '',
-            baseCurrency: '',
-            destinationCurrency: ''
-        });
+        
 
     }
     
@@ -46,12 +34,8 @@ export class AppComponent implements OnInit {
             }
         );
     }
+    
     onAddProd(){
         
-    }
-
-    save(model: User, isValid: boolean) {
-        this.submitted = true;
-        console.log(model, isValid);
     }
 }
