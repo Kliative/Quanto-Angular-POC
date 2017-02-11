@@ -24,14 +24,14 @@ export class HttpService {
     return this.http.get('https://quantotest-8a1ec.firebaseio.com/data.json').map((response: Response) => response.json());
   }
 
-   getCurrentLocation(): Observable<any> {
-        return this.http.get('http://ipinfo.io')
-        .map((response: Response) => response.json())
-        .catch(error => {
-            console.log(error);
-            return Observable.throw(error.json());
-        });
-    }
+  //  getCurrentLocation(): Observable<any> {
+  //       return this.http.get('http://ipinfo.io')
+  //       .map((response: Response) => response.json())
+  //       .catch(error => {
+  //           console.log(error);
+  //           return Observable.throw(error.json());
+  //       });
+  //   }
 
     
 

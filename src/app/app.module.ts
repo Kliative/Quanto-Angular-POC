@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {ProductListComponent} from "./product-list.component";
 import {ProductItemComponent} from "./product-item.component";
+import {ProductBaseItemComponent} from "./product-base-item.component";
 import {ProductSearchComponent} from "./product-search.component";
 
 import { ExchangeService } from './exchange.service'
@@ -16,6 +17,7 @@ import { ProductService } from './product.service';
     AppComponent,
     ProductListComponent,
     ProductItemComponent,
+    ProductBaseItemComponent,
     ProductSearchComponent
   ],
   imports: [

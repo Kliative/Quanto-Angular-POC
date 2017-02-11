@@ -3,7 +3,10 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { ProductItem } from './product-item';
+import { ProductBaseItem } from './product-base-item';
+
 import { PRODUCT_ITEMS } from './product.data';
+import { PRODUCT_BASE_ITEMS } from './product-base.data';
 
 @Injectable()
 export class ProductService {
@@ -14,8 +17,15 @@ export class ProductService {
         return PRODUCT_ITEMS;
     }
 
+    getProductBaseItems() {
+        return PRODUCT_BASE_ITEMS;
+    }
+
     addProductItem(productItem: ProductItem){
         PRODUCT_ITEMS.push(productItem);
+    }
+    addProductBaseItem(productBaseItem: ProductBaseItem){
+        PRODUCT_BASE_ITEMS.push(productBaseItem);
     }
 
     searchData(): Observable<any>{

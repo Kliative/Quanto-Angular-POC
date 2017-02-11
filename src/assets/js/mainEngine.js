@@ -79,7 +79,6 @@ $(window).load(function() {
 
         $('#quantoDetSect').fadeIn('slow');
 
-
       $("html, body").animate({ scrollTop: $(document).height()-$(document).height() }, 1000);
         for (var i = 0; i < ccData.length; i++){
           // look for the entry with a matching `code` value

@@ -24,13 +24,13 @@ export class AppComponent implements OnInit {
     public events: any[] = [];
 
     constructor(private _fb: FormBuilder, private _sFb:FormBuilder, private httpService: HttpService) {
-        this.httpService.getCurrentLocation()
-            .subscribe(
-                (data:any) => {
-                    this.city = data.city;
+        // this.httpService.getCurrentLocation()
+        //     .subscribe(
+        //         (data:any) => {
+        //             this.city = data.city;
                     
-                }
-            );
+        //         }
+        //     );
      }
         
     ngOnInit() {

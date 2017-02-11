@@ -1,14 +1,11 @@
 
        <form [formGroup]="listDataForm" novalidate (ngSubmit)="save(listDataForm.value, listDataForm.valid)">
-
-  
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
                 <div class="well wellColor animated fadeIn"> 
                 <div class="row">
-                    
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <select class="form-control" id="listBaseCurSel" formControlName="listBaseCurrency">
-                            <option value="">Select Base Currency...</option>
+                            <option value="">Select Base Country...</option>
                             <option id="listCurrentLocOpt"></option>
                         </select>
                         <!--<br>-->
@@ -18,7 +15,7 @@
                 <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <select class="form-control" id="listDestCurSel" formControlName="listDestinationCurrency"> 
-                            <option value="">Select Destination Currency...</option>
+                            <option value="">Select Destination Country...</option>
                             
                         </select>
                         </div>
@@ -27,6 +24,12 @@
                     <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <!--<input type="text" class="form-control" id="product" #product>-->
+                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">In base Country: <span id="totalBaseCountry"></span></pre>
+                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Total destCurr: <span id="totalBaseCash"></span></pre>
+                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Total baseCurr: <span id="totalCash"></span></pre>
+                            <hr>
+                            <product-list></product-list>
+                            <hr>
                             <div class="row">
                                 <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
                                 <select class="form-control" id="sDProdSel" formControlName="product" #product>
@@ -51,19 +54,7 @@
                                 <button class="btn btn-success" id="addBtn" type="button" (click)="onAddProd(listDataForm.value)">Add</button>
                                 </div>
                             </div>
-                            <hr>
-                            <!--<span *ngFor="#weatherItem of weatherItems">-->
-                                <!--<pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Product Name</pre>
-                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Amount</pre>
-                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Currency + Cash</pre>-->
-                            <!--</span>-->
-                            <product-list></product-list>
-                            <hr>
-                            
-                                <pre class="col-sx-3 col-sm-3 col-md-3 col-lg-3 hidden-md-down">Product</pre>
-                                <pre class="col-sx-3 col-sm-3 col-md-3 col-lg-3 hidden-md-down">Range</pre>
-                                <pre class="col-sx-3 col-sm-3 col-md-3 col-lg-3">Total destCurr: <span id="totalBaseCash"></span></pre>
-                                <pre class="col-sx-3 col-sm-3 col-md-3 col-lg-3">Total baseCurr: <span id="totalCash"></span></pre>
+                              
                         </div>
                     </div>
                 </div>
@@ -71,6 +62,6 @@
 
         </form>
 
-        <!--<div class="margin-20">
+        <div class="margin-20">
             <pre>myForm value: <br>{{listDataForm.value | json}}</pre>
-        </div>-->
+        </div>
