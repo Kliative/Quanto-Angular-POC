@@ -53,6 +53,8 @@ $(window).load(function() {
     //Country Codes
     $.getJSON('/assets/js/countryJSON/product_rangetest.json', function(ccData) {    
  
+        console.log(ccData);
+
     $('#QuantoCalc').click(function(){
 
         $('#quantoDetSect').fadeIn('slow');
@@ -133,14 +135,7 @@ $(window).load(function() {
 
 
 
-          //geoLocation
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
 
-              var lat = position.coords.latitude; 
-              var long = position.coords.longitude;
-
-                $.getJSON('https://freegeoip.net/json/?callback=?', function(location) {
 
                     $('#loader-wrapper').fadeOut('slow');
                     
@@ -154,6 +149,7 @@ $(window).load(function() {
 
                         var countryCurrencyCode = countryListData.ISO4217_currency_alphabetic_code;
 
+                        console.log(countryCurrencyCode);
                         //QuantoCalc
                         $("#baseCurSel").append($('<option>', {
                           value: countryCurrencyCode,
@@ -180,11 +176,5 @@ $(window).load(function() {
 
                         
                     }
-                });
-            });
-          }
     });
-
-    
-
   });
