@@ -7,8 +7,14 @@
         $('#Coke').hide();
         $('#WineBottle').hide();
         $('#quantoDetSect').hide();
-  
+        
+        $('.quant-p2').hide();
+        
+
 $(window).load(function() {
+
+    
+
 
     //amke window scroll down
     $("html, body").animate({ scrollTop: $(document).height() }, 1000);
@@ -52,12 +58,15 @@ $(window).load(function() {
       
     //Country Codes
     $.getJSON('/assets/js/countryJSON/product_rangetest.json', function(ccData) {    
- 
-    
-
+    $('#reQauntoCalc').click(function(){
+        $('.quant-p2').fadeOut('slow');
+        $('.quant-p1').fadeIn('slow');
+    });
     $('#QuantoCalc').click(function(){
-
-        $('#quantoDetSect').fadeIn('slow');
+        
+        $('.quant-p1').fadeOut('slow');
+        $('.quant-p2').fadeIn('slow');
+        
 
         for (var i = 0; i < ccData.length; i++){
 

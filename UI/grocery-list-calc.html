@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QuantoTest UI</title>
+  <base href="/">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <!--BootStrap-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!--Font Awesome-->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="file:///Users/wilonawilson/QuantoTest/UI/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon-list"></div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+                    <div class="list-box">
+                            <div class="conv-box-image">
+                                    <div class="conversionCountries">
+                                                <div class="baseCur-list">MUR</div>
+                                                <div class="conversionCountries-img"></div>
+                                                <div class="destCur-list">ZAR</div>
+                                    </div>
+                            </div>
+                            <div id="listTotals" class="reveal-closed">
+                                    
+                                    <!-- Closed -->
+                                    <div class="convertedBlock" id="closedTotalBox">
+                                        <div class="container">
+                                            <div class="row">
+                                            <div class="col-xs-6">
+                                                <p>Total in ZAR: <span class="smallTotals">5000.00</span></p>
+                                            </div> 
+                                            <div class="col-xs-6">
+                                               <p>Total in ZAR: <span class="smallTotals">5000.00</span></p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Open -->
+                                    <div class="convertedBlock" id="openTotalBox">
+                                        <div class="container">
+                                            <div class="row">
+                                            <div class="col-xs-7">
+                                                <p>These product will cost you:</p>
+                                                <div class="convCash">5000.00</div>
+                                                <p>in South Africa they cost:</p>
+                                                <div class="basePrices">5000.00</div>
+                                            </div> 
+                                            <div class="col-xs-5">
+                                                <div class="list-total">
+                                                    <p class="totalTxt">Total</p>
+                                                    <p class="totalAmount">5000.00</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <!-- Table -->
+                            <div class="container" id="table-headings">
+                                <div class="row">
+
+                                    <div class="col-xs-4">
+                                        Product
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <!--Amount-->
+                                    </div>
+                                    <div class="col-xs-4">
+                                        Price
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="container table-content-height-big" id="table-content">
+                                <div class="row">
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <!--Amount Counter-->
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    <div class="product-cell">
+                                        <div class="col-xs-4">
+                                             Domestic Beer
+                                        </div>
+                                        <div class="col-xs-4">
+                                            
+                                        </div>
+                                        <div class="col-xs-4 col-xs-4">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                    </div>
+                    
+                        
+                </div>
+                <div class="col-md-4 col-lg-4"></div>
+            </div>
+        </div>  
+
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
+                
+                <div class="btn-div-list-drop">
+                    <div class="select-input">
+                        <select name="" id="select-input-select-list">
+                            <option value="">Product</option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                        <br>
+                        <select name="" id="select-input-select-list">
+                            <option value="">Product</option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    
+                    
+                        
+                    
+                        <div class="btn-div-list"></div>
+                </div>
+                   
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src=""></script>
+  <script> 
+$("#listTotals").click(function() {
+	$("#listTotals").toggleClass("reveal-closed").toggleClass("reveal-open");
+    $('#closedTotalBox').fadeToggle(0);
+    $("#table-content").toggleClass("table-content-height-big").toggleClass("table-content-height-small");
+});
+  </script>
+</html>

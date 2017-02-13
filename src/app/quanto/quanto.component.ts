@@ -34,6 +34,8 @@ export class QuantoComponent implements OnInit {
       this._productService.searchData()
               .subscribe(
                   data => {
+                       
+                    //    console.log(data);
                           for (var i = 0; i < data.length; i++) { 
                               if(data[i].ISO4217_currency_alphabetic_code == this.quantoForm.controls['baseCurrency'].value){
                               
@@ -52,7 +54,7 @@ export class QuantoComponent implements OnInit {
                                             var finalConv = baseToDollar*baseCurrVal;
                                             this.baseCurCon = finalConv;
 
-                                            document.getElementById("destVbasTxt").innerHTML = finalConv.toFixed(5);
+                                            // document.getElementById("destVbasTxt").innerHTML = finalConv.toFixed(5);
                                             this.v2 = Number(baseCom);
                                             // console.log("v2 "+this.v2);
                                 });
@@ -75,7 +77,7 @@ export class QuantoComponent implements OnInit {
                                             var baseToDollar = 1/baseCurrVal;
                                             var finalConv = baseToDollar*destCurrVal;
 
-                                            document.getElementById("basVdestTxt").innerHTML = finalConv.toFixed(5);
+                                            // document.getElementById("basVdestTxt").innerHTML = finalConv.toFixed(5);
                                             
                                             this.v1 = Number((destCom*this.baseCurCon).toFixed(2));
 
@@ -93,15 +95,21 @@ export class QuantoComponent implements OnInit {
                                             // console.log("PriceDiff ="+priceDiff);
                                             // console.log(diffPercent+"% Diff");
 
-                                            if(Number(diffPercent)>100){
-                                                document.getElementById("finalCalcPer").innerHTML = diffPercent+" % less expensive";
-                                            } else {
-                                                document.getElementById("finalCalcPer").innerHTML = diffPercent+" % more expensive";
-                                            }
+                                            // if(Number(diffPercent)>100){
+                                            //     document.getElementById("finalCalcPer").innerHTML = diffPercent+" % less expensive";
+                                            // } else {
+                                            //     document.getElementById("finalCalcPer").innerHTML = diffPercent+" % more expensive";
+                                            // }
                                             if(priceDiff<0){
-                                                document.getElementById("finalCalcCash").innerHTML = Math.abs(Number(numPriceDiff))+" less expensive";
+                                                document.getElementById("finalCalcCash").innerHTML = Math.abs(Number(numPriceDiff))+"";
+                                                document.getElementById("finalCalcCash-descrip").innerHTML = "less expensive";
+                                                document.getElementById("result-difference-circle").className =  "DC-green";
+                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-minus-circle" aria-hidden="true"></i>';
                                             }else{
-                                                document.getElementById("finalCalcCash").innerHTML = priceDiff.toFixed(2)+" more expensive";
+                                                document.getElementById("finalCalcCash").innerHTML = priceDiff.toFixed(2)+"";
+                                                document.getElementById("finalCalcCash-descrip").innerHTML = "more expensive";
+                                                document.getElementById("result-difference-circle").className =  "DC-red";
+                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-plus-circle" aria-hidden="true"></i>';
                                             } 
                                 });
                             

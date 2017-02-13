@@ -14,7 +14,9 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
     <div id="wrapper">
+
         <!-- Header -->
         <div class="container">
             <div class="row">
@@ -33,10 +35,9 @@
                                     <img src="file:///Users/wilonawilson/QuantoTest/UI/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select name="" id="select-input-select">
-                                        <option value="">Current Location</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="select-input-select baseCurSel" formControlName="baseCurrency">
+                                        <option value="">Select Base Currency...</option>
+                                        
                                     </select>
                                 </div>
                             </div>
@@ -48,10 +49,8 @@
                                     <img src="file:///Users/wilonawilson/QuantoTest/UI/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select name="" id="select-input-select">
-                                        <option value="">Destination Location</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="select-input-select destCurSel" formControlName="destinationCurrency"> 
+                                        <option value="">Select Destination Currency...</option>
                                     </select>
                                 </div>
                             </div>
@@ -60,10 +59,16 @@
                                     <img src="file:///Users/wilonawilson/QuantoTest/UI/img/cart-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select name="" id="select-input-select">
-                                        <option value="">Product</option>
-                                        <option value=""></option>
-                                        <option value=""></option>
+                                    <select id="select-input-select prodSel" formControlName="product">
+                                        <option value="">Select Product...</option>
+                                        <option value="McMeal">McMeal at McDonalds</option>
+                                        <option value="DomBeer">Domestic Beer</option>
+                                        <option value="ImpBeer">Imported Beer</option>
+                                        <option value="Coke">Coke</option>
+                                        <option value="WineBottle">Wine Bottle</option>
+                                        <option value="PackSmokes">Pack Smokes</option>
+                                        <option value="OneWayTicket">One Way Travel Ticket</option>
+                                        <option value="MovieTicket">Movie Tickt (1 person)</option>
                                     </select>
                                 </div>
                             </div>
@@ -78,8 +83,72 @@
         <!-- Button -->
         <div class="container">
             <div class="row">
+                 <button type="submit" id="QuantoCalc" class="btn-div"></button>  
+            </div>
+        </div>
+
+
+    </div>
+    <div id="wrapper">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon"></div>
+            </div>
+        </div>
+        <style>
+            .detail-conversion{
+               margin-top: -3em;
+               margin-bottom: 3em;
+            }
+        </style>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+                    <div class="compare-result">
+                        <div class="result-circle">
+                            <div class="range">
+                                <div class="result-lowest">
+                                    <label for="">Lowest</label>
+                                    <p><span class="currSymbol">£</span>5000.00</p>
+                                </div>
+                                <div class="result-highest">
+                                    <label for="">Highest</label>
+                                    <p><span class="currSymbol">£</span>5000.00</p>
+                                </div>
+                                <div id="result-difference-circle DC-green">
+                                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                    <br>
+                                    <br>
+                                    <p class="diff-amount"><span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span></p>
+                                    <p>Less <br> Expensive</p>
+                                </div>
+                            </div>
+                            <div class="compare-details">
+                                <p class="detail-conversion"><span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] </p>
+                                <div class="compare-prod-icon">
+                                    <img src="file:///Users/wilonawilson/QuantoTest/UI/img/can-icon.png" alt="">
+                                </div>
+                                <p class="detail-price"><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
+                                <p class="detail-destCountry">in <span id="destCoName"></span></p>
+                                <br>
+                                <p class="detail-baseCountry-price"><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span> in <span id="baseCoName"></span></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4"></div>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
                 
-                <div class="btn-div"></div>
+                <div class="compare-btn-div" id="reQauntoBtn"></div>
                    
             </div>
         </div>
@@ -87,7 +156,7 @@
 
     </div>
 
-
+  </form>
 </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

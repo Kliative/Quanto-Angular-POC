@@ -1,133 +1,145 @@
-<form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
+    <form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
+    <div id="wrapper" class="quant-p1">
 
-
-<span id="quantoDetSect">
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
-          <div class="well wellColor animated fadeIn"> 
-    <!---->
-          <!--[INFO SECTION]-->
+        <!-- Header -->
+        <div class="container">
             <div class="row">
-              <div class="info">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                  
-                    <!--Text-->
-                    <label for="">Price in <span id="destCoName"></span></label>
-                      <p><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
-                      <small><span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] </small>
-                      <hr>
-                    <div class="well" id="finalDetailWell">
-                      <span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span>
-                      <br>
-                      <small id="finalCalcPer">Product is Less/More Expansive</small>
+                    <div class="head-icon"></div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1  col-md-4 col-lg-4"></div>
+                <div class="col-xs-10 col-sm-10  col-md-4 col-lg-4">
+                    <div class="compare-form">
+                            <div class="currLocSelection">
+                                <div class="select-icons">
+                                    <img src="../assets/img/currLoc-icon.svg" alt="">
+                                </div>
+                                <div class="select-input">
+                                    <select id="baseCurSel" class="select-input-select" formControlName="baseCurrency">
+                                        <option value="">Select Base Currency...</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="plane-icon" style="margin-left: 1em;">
+
+                            </div>
+                            <div class="currLocSelection" style="margin-bottom:3em">
+                                <div class="select-icons">
+                                    <img src="../assets/img/currLoc-icon.svg" alt="">
+                                </div>
+                                <div class="select-input">
+                                    <select id="destCurSel" class="select-input-select"  formControlName="destinationCurrency"> 
+                                        <option value="">Select Destination Currency...</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="currLocSelection">
+                                <div class="select-icons">
+                                    <img src="../assets/img/cart-icon.svg" alt="">
+                                </div>
+                                <div class="select-input">
+                                    <select id="prodSel" class="select-input-select" formControlName="product">
+                                        <option value="">Select Product...</option>
+                                        <option value="McMeal">McMeal at McDonalds</option>
+                                        <option value="DomBeer">Domestic Beer</option>
+                                        <option value="ImpBeer">Imported Beer</option>
+                                        <option value="Coke">Coke</option>
+                                        <option value="WineBottle">Wine Bottle</option>
+                                        <option value="PackSmokes">Pack Smokes</option>
+                                        <option value="OneWayTicket">One Way Travel Ticket</option>
+                                        <option value="MovieTicket">Movie Tickt (1 person)</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
-    <hr>
-                    <label for="">Price in <span id="baseCoName"></span> </label>
-                    <p><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span></p>
-                  
-                    <hr>
-                    <label for="">Exchange Rate</label>
-                    <p>
-                      <small>1 {{quantoForm.controls.destinationCurrency.value}} = <span id="destVbasTxt"></span> {{quantoForm.controls.baseCurrency.value}} </small>
-                      <br>
-                      <small>1 {{quantoForm.controls.baseCurrency.value}} =  = <span id="basVdestTxt"></span> {{quantoForm.controls.destinationCurrency.value}}</small>
-                    </p>
                     
-                    <small><i class="fa fa-refresh" aria-hidden="true"></i> The rates are updated hourly.</small>
-                
+                        
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                  
-                  <div class="iconBox" id="McMeal">
-                    <img src="/assets/img/McMeal.jpg" alt="">
-                  </div>
-                  <div class="iconBox" id="DomBeer">
-                    <img src="/assets/img/DomBeer.jpg" alt="">
-                  </div>
-                  <div class="iconBox" id="ImpBeer">
-                    <img src="/assets/img/ImpBeer.jpg" alt="">
-                  </div>
-                  <div class="iconBox" id="WineBottle">
-                    <img src="/assets/img/Wine.jpg" alt="">
-                  </div>
-                  <div class="iconBox" id="Coke">
-                    <img src="/assets/img/Coke.jpg" alt="">
-                  </div>
-
-                </div>
-              </div>
+                <div class="col-xs-1 col-sm-1 col-md-4 col-lg-4"></div>
             </div>
-            <hr>
+        </div>
 
-            <!---->
-        
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
+                 <button type="submit" style="border:none; background-color: transparent" id="QuantoCalc" class="btn-div"></button>  
+            </div>
+        </div>
 
-          </div>
+
     </div>
-</span>
-
-    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
-      <div class="well wellColor animated fadeIn"> 
-<!---->
-
-        <!---->
-        <!-- [Product SECTION]-->
-        <div class="row">
-          
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <select class="form-control" id="prodSel" formControlName="product">
-                  <option value="">Select Product...</option>
-                  <option value="McMeal">McMeal at McDonalds</option>
-                  <option value="DomBeer">Domestic Beer</option>
-                  <option value="ImpBeer">Imported Beer</option>
-                  <option value="Coke">Coke</option>
-                  <option value="WineBottle">Wine Bottle</option>
-                  <option value="PackSmokes">Pack Smokes</option>
-                  <option value="OneWayTicket">One Way Travel Ticket</option>
-                  <option value="MovieTicket">Movie Tickt (1 person)</option>
-                </select>
+    <div id="wrapper" class="quant-p2">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon"></div>
             </div>
-          
+        </div>
+        <style>
+            .detail-conversion{
+               margin-top: -3em;
+               margin-bottom: 3em;
+            }
+        </style>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+                    <div class="compare-result">
+                        <div class="result-circle">
+                            <div class="range">
+                                <div class="result-lowest">
+                                    <label for="">Lowest</label>
+                                    <p><span class="currSymbol">£</span>5000.00</p>
+                                </div>
+                                <div class="result-highest">
+                                    <label for="">Highest</label>
+                                    <p><span class="currSymbol">£</span>5000.00</p>
+                                </div>
+                                <div id="result-difference-circle">
+                                    <p id="result-icon"></p>
+                                    
+                                    <br>
+                                    <p class="diff-amount"><span id="baseCurrSymbolDetail"></span> <span id="finalCalcCash"></span></p>
+                                    <p id="finalCalcCash-descrip"></p>
+                                </div>
+                            </div>
+                            <div class="compare-details">
+                                <p class="detail-conversion"><span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] </p>
+                                <div class="compare-prod-icon">
+                                    <img src="../assets/img/can-icon.png" alt="">
+                                </div>
+                                <p class="detail-price"><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
+                                <p class="detail-destCountry">in <span id="destCoName"></span></p>
+                                <br>
+                                <p class="detail-baseCountry-price"><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span> in <span id="baseCoName"></span></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4"></div>
+            </div>
         </div>
 
-        <!--<hr>  -->
-        <!--[currency SECTION]-->
-        <div class="row">
-          
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <select class="form-control" id="baseCurSel" formControlName="baseCurrency">
-                <option value="">Select Base Currency...</option>
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
                 
-              </select>
-              <!--<br>-->
-              <!--<label>Your current location is:</label> <i id="userLoc"></i>-->
+                <div class="compare-btn-div" id="reQauntoCalc"></div>
+                   
             </div>
-      </div>
-
-      <!--<hr>  -->
-
-
-      <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-              <select class="form-control" id="destCurSel" formControlName="destinationCurrency"> 
-                <option value="">Select Destination Currency...</option>
-                
-              </select>
-            </div>
-
-
         </div>
-        <!--<hr>-->
-        <button type="submit" id="QuantoCalc" style="width:100%;" class="btn btn-danger">Quanto</button>
-      </div>
-
-<!--< id="calculateBtn" class="btn btn-primary">Test</button>-->
 
  <!--<div class="margin-20">
               <pre>quantoForm value: <br>{{quantoForm.value | json}}</pre>
 </div>-->
-
-           
     </div>
 
   </form>
-
