@@ -53,7 +53,7 @@ $(window).load(function() {
     //Country Codes
     $.getJSON('/assets/js/countryJSON/product_rangetest.json', function(ccData) {    
  
-        console.log(ccData);
+    
 
     $('#QuantoCalc').click(function(){
 
@@ -149,7 +149,7 @@ $(window).load(function() {
 
                         var countryCurrencyCode = countryListData.ISO4217_currency_alphabetic_code;
 
-                        console.log(countryCurrencyCode);
+                       
                         //QuantoCalc
                         $("#baseCurSel").append($('<option>', {
                           value: countryCurrencyCode,
