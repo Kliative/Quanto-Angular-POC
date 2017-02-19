@@ -32,6 +32,7 @@ export class QuantoComponent implements OnInit {
   }
   quantoClick(form: FormGroup){
       this._productService.searchData()
+              .retry()
               .subscribe(
                   data => {
                        
@@ -44,7 +45,7 @@ export class QuantoComponent implements OnInit {
                                 document.getElementById("basePriceTxt").innerHTML = baseCom;
                                 document.getElementById("baseCoName").innerHTML = data[i].name;
 
-                                this._exchangeService.getEx().subscribe(
+                                this._exchangeService.getEx().retry().subscribe(
                                         data => {
                                                 
                                             var baseCurrVal = data.rates[this.quantoForm.controls['baseCurrency'].value];
@@ -68,7 +69,7 @@ export class QuantoComponent implements OnInit {
                                 document.getElementById("destPriceTxtEX").innerHTML = destCom;
                                 document.getElementById("destCoName").innerHTML = data[i].name;
 
-                                this._exchangeService.getEx().subscribe(
+                                this._exchangeService.getEx().retry().subscribe(
                                         data => {
                                                   
                                             var baseCurrVal = data.rates[this.quantoForm.controls['baseCurrency'].value];
@@ -104,13 +105,14 @@ export class QuantoComponent implements OnInit {
                                                 document.getElementById("finalCalcCash").innerHTML = Math.abs(Number(numPriceDiff))+"";
                                                 document.getElementById("finalCalcCash-descrip").innerHTML = "less expensive";
                                                 document.getElementById("result-difference-circle").className =  "DC-green";
-                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-minus-circle" aria-hidden="true"></i>';
+                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-smile-o" aria-hidden="true"></i>';
                                             }else{
                                                 document.getElementById("finalCalcCash").innerHTML = priceDiff.toFixed(2)+"";
                                                 document.getElementById("finalCalcCash-descrip").innerHTML = "more expensive";
                                                 document.getElementById("result-difference-circle").className =  "DC-red";
-                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-plus-circle" aria-hidden="true"></i>';
+                                                document.getElementById("result-icon").innerHTML =  '<i class="fa fa-frown-o" aria-hidden="true"></i>';
                                             } 
+
                                 });
                             
                               }

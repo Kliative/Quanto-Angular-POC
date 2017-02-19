@@ -29,6 +29,11 @@ export class ProductService {
         PRODUCT_BASE_ITEMS.push(productBaseItem);
     }
 
+    deleteProductItem(productItem: ProductItem,productBaseItem: ProductBaseItem){
+        PRODUCT_ITEMS.splice(PRODUCT_ITEMS.indexOf(productItem), 1);
+        PRODUCT_BASE_ITEMS.splice(PRODUCT_BASE_ITEMS.indexOf(productBaseItem), 1);
+    }
+
     searchData(): Observable<any>{
       return this.http.get('/assets/js/countryJSON/product_rangetest.json')
                 .map(response => response.json())
@@ -37,4 +42,5 @@ export class ProductService {
                 return Observable.throw(error.json())
                 });
     }
+    
 }

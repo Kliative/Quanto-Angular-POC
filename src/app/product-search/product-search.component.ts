@@ -15,10 +15,14 @@ import { PRODUCT_ITEMS } from './product.data';
 })
 
 export class ProductSearchComponent implements OnInit {
-     
+     public totalBaseCash: string;
+     public totalCash: string;
+     public totalBaseCountry: string;
+
      public listDataForm: FormGroup;
 
      constructor (private _sFb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService){}
+     
 
     ngOnInit() {
             
@@ -29,7 +33,35 @@ export class ProductSearchComponent implements OnInit {
                 productRange: ''
                 
             });
+            // setInterval(()=> {this.reCalc(); },400); 
+     
     }
+   
+    reCalc(){
+        console.log('reCalc clicked');
+        this._exchangeService.getEx().subscribe(
+                                        data => {
+                                            
+                                            var prodPrices:number[]=[];
+
+                                            for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
+                                                    prodPrices.push(Number(PRODUCT_ITEMS[j].price));
+                                            }
+
+                                            var totalCash = prodPrices.reduce((a, b) => a + b, 0);
+                                            var baseCurrVal = data.rates[this.listDataForm.controls['listBaseCurrency'].value];
+                                            var destCurrVal = data.rates[this.listDataForm.controls['listDestinationCurrency'].value];
+                                           
+                                             var baseToDollar = totalCash/destCurrVal;
+                                             var finalConv = baseToDollar*baseCurrVal;
+
+                                             
+                                             document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+
+                                            
+                                }); 
+    }
+
     onAddProd(form: FormGroup){
         // console.log(form);
         this._productService.searchData()
@@ -57,23 +89,17 @@ export class ProductSearchComponent implements OnInit {
                                             var totalCash = prodPrices.reduce((a, b) => a + b, 0);
                                             var baseCurrVal = data.rates[this.listDataForm.controls['listBaseCurrency'].value];
                                             var destCurrVal = data.rates[this.listDataForm.controls['listDestinationCurrency'].value];
-                                            // var displayPrice = fx(totalCash).from(baseCurrVal).to(destCurrVal);
+                                           
                                              var baseToDollar = totalCash/destCurrVal;
                                              var finalConv = baseToDollar*baseCurrVal;
 
-                                            // console.log(this.listDataForm.controls['listBaseCurrency'].value);
-                                            // console.log(this.listDataForm.controls['listDestinationCurrency'].value);
-                                            
-                                            // console.log(baseCurrVal);
-                                            // console.log(destCurrVal);
-                                            // console.log(finalConv);
-
-                                            //  console.log(totalCash);
-                                            //  console.log(finalConv);
-                                            console.log(prodPrices);
                                              document.getElementById("totalBaseCash").innerHTML = totalCash.toFixed(2).toString();
                                              document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-                                            
+
+                                            //  document.getElementById('delete').onclick = function() {
+                                            //     document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                            //     console.log('yeah');
+                                            //  }​;
                                 });                               
                             }
                             if(data[i].ISO4217_currency_alphabetic_code == this.listDataForm.controls['listBaseCurrency'].value){
@@ -95,10 +121,8 @@ export class ProductSearchComponent implements OnInit {
                                         data => {
 
                                     var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
-                                    
+
                                     document.getElementById("totalBaseCountry").innerHTML = totalCash.toFixed(2).toString();
-                                    
-                                    console.log("baseTotalCash "+totalCash);
 
                                 });                               
                             }

@@ -1,12 +1,29 @@
- @font-face {
-    font-family: bariol-light;
-    src: url('../assets/css/Bariol_Light.otf');
-  }
-  @font-face {
-    font-family: bariol-thin;
-    src: url('../assets/css/Bariol_Thin.otf');
-  }
-  @font-face {
-    font-family: bariol-regular;
-    src: url('../assets/css/Bariol_Regular.otf');
-  }
+@font-face {
+	font-family: 'Bariol-Thin';
+	src: url('Bariol-Thin.eot');
+	src: url('Bariol-Thin.eot?#iefix') format('embedded-opentype'),
+		url('Bariol-Thin.woff') format('woff'),
+		url('Bariol-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bariol-Light';
+	src: url('Bariol-Light.eot');
+	src: url('Bariol-Light.eot?#iefix') format('embedded-opentype'),
+		url('Bariol-Light.woff') format('woff'),
+		url('Bariol-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bariol-Regular';
+	src: url('Bariol-Regular.eot');
+	src: url('Bariol-Regular.eot?#iefix') format('embedded-opentype'),
+		url('Bariol-Regular.woff') format('woff'),
+		url('Bariol-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}

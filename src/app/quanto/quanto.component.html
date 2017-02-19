@@ -11,8 +11,8 @@
         <!-- Body -->
         <div class="container">
             <div class="row">
-                <div class="col-xs-1 col-sm-1  col-md-4 col-lg-4"></div>
-                <div class="col-xs-10 col-sm-10  col-md-4 col-lg-4">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
                     <div class="compare-form">
                             <div class="currLocSelection">
                                 <div class="select-icons">
@@ -60,7 +60,7 @@
                     
                         
                 </div>
-                <div class="col-xs-1 col-sm-1 col-md-4 col-lg-4"></div>
+                <div class="col-md-4 col-lg-4"></div>
             </div>
         </div>
  
@@ -80,12 +80,6 @@
                     <div class="head-icon"></div>
             </div>
         </div>
-        <style>
-            .detail-conversion{
-               margin-top: -3em;
-               margin-bottom: 3em;
-            }
-        </style>
         <!-- Body -->
         <div class="container">
             <div class="row">
@@ -102,6 +96,7 @@
                                     <label for="">Highest</label>
                                     <p><span class="currSymbol">£</span>5000.00</p>
                                 </div>
+                                <div class="result-curve"></div>
                                 <div id="result-difference-circle">
                                     <p id="result-icon"></p>
                                     
@@ -111,14 +106,23 @@
                                 </div>
                             </div>
                             <div class="compare-details">
-                                <p class="detail-conversion"><span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] </p>
                                 <div class="compare-prod-icon">
                                     <img src="../assets/img/can-icon.png" alt="">
                                 </div>
-                                <p class="detail-price"><span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span></p>
-                                <p class="detail-destCountry">in <span id="destCoName"></span></p>
-                                <br>
-                                <p class="detail-baseCountry-price"><span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span> in <span id="baseCoName"></span></p>
+                                <p class="detail-price">
+                                    <span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span>
+                                    <br>
+                                    <span class="detail-destCountry">in <span id="destCoName"></span></span>
+                                </p>
+                                <p class="detail-conversion">
+                                    <span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span> in <span id="baseCoName"></span>
+                                    <br>
+                                    <span id="destPriceTxtEX"></span> [ {{quantoForm.controls.destinationCurrency.value}} ] = <span id="basePricePlusExhange"></span> [ {{quantoForm.controls.baseCurrency.value}} ] 
+                                    
+                                    
+                                </p>
+                               
+                                <!--<p class="detail-baseCountry-price"></p>-->
 
                             </div>
                         </div>

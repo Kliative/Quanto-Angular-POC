@@ -1,6 +1,6 @@
 @import url("../css/fonts.css");
 #wrapper{
-      min-width: 375px;
+      min-width: 320px;
       min-height: 100%;
       background: #fff; /* For browsers that do not support gradients */
         background: -webkit-linear-gradient(#fff, #F3F3F3); /* For Safari 5.1 to 6.0 */
@@ -130,13 +130,12 @@
             position: absolute;
         }
             .result-circle {
-                 background-image: url('file:///Users/wilonawilson/QuantoTest/UI/img/result-circle.png');
+                 background-image: url('../assets/img/result-circle.png');
                  background-repeat: no-repeat;
-                 background-repeat: no-repeat;
-                 width: 366px;
+                 background-size: contain;
+                 width: 100%;
                  height: 293px;
                  margin: 0 auto;
-                 margin-left: -10px;
             }
             .result-lowest,
             .result-highest {
@@ -185,7 +184,7 @@
 
             .compare-details {
                 position: absolute;
-                width: 366px;
+                width: 100%;
                 height: 100%;
                 text-align: center;
             }
@@ -326,7 +325,7 @@
         height: 21px;
         width: 360px;
         margin: 5px;
-        font-family: bariol-regular;
+        font-family: Bariol-Regular;
         border-radius: 10px;
     }
     .btn-div-list-drop {
