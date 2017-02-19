@@ -33,12 +33,11 @@ export class ProductSearchComponent implements OnInit {
                 productRange: ''
                 
             });
-            // setInterval(()=> {this.reCalc(); },400); 
      
     }
    
     reCalc(){
-        console.log('reCalc clicked');
+        
         this._exchangeService.getEx().subscribe(
                                         data => {
                                             
@@ -82,7 +81,7 @@ export class ProductSearchComponent implements OnInit {
                                 for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
                                         prodPrices.push(Number(PRODUCT_ITEMS[j].price));
                                 }
-                                
+                                    
                                 this._exchangeService.getEx().subscribe(
                                         data => {
                                                   
