@@ -101,6 +101,7 @@ export class QuantoComponent implements OnInit {
                                             // } else {
                                             //     document.getElementById("finalCalcPer").innerHTML = diffPercent+" % more expensive";
                                             // }
+                                            
                                             if(priceDiff<0){
                                                 document.getElementById("finalCalcCash").innerHTML = Math.abs(Number(numPriceDiff))+"";
                                                 document.getElementById("finalCalcCash-descrip").innerHTML = "less expensive";

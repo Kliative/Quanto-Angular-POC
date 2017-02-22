@@ -72,8 +72,10 @@ export class ProductSearchComponent implements OnInit {
 
                                 var country = data[i];
                                 var range = this.listDataForm.controls['productRange'];
-                                const productItem = new ProductItem(this.listDataForm.controls['product'].value, range.value, country.products[this.listDataForm.controls['product'].value][this.listDataForm.controls['productRange'].value].p);
+                                const productItem = new ProductItem(this.listDataForm.controls['product'].value, range.value, 1, country.products[this.listDataForm.controls['product'].value][this.listDataForm.controls['productRange'].value].p);
                                 
+                                // console.log(productItem);
+
                                 this._productService.addProductItem(productItem);
 
                                 var prodPrices:number[]=[];
@@ -106,10 +108,10 @@ export class ProductSearchComponent implements OnInit {
 
                                 var country = data[i];
                                 var range = this.listDataForm.controls['productRange'];
-                                const productBaseItem = new ProductBaseItem(this.listDataForm.controls['product'].value, range.value, country.products[this.listDataForm.controls['product'].value][this.listDataForm.controls['productRange'].value].p);
+                                const productBaseItem = new ProductBaseItem(this.listDataForm.controls['product'].value, range.value, 1, country.products[this.listDataForm.controls['product'].value][this.listDataForm.controls['productRange'].value].p);
                                 
                                 this._productService.addProductBaseItem(productBaseItem);
-
+ 
                                 var baseProdPrices:number[]=[];
 
                                 for (var j = 0; j < PRODUCT_BASE_ITEMS.length; j++ ) { 

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, forwardRef } from '@angular/core';
 import { ProductItem } from "./product-item";
+import { ProductSearchComponent } from "./product-search.component";
 import { ProductBaseItem } from "./product-base-item";
 import { ProductService } from "../services/product.service";
 
@@ -31,15 +32,18 @@ export class ProductListComponent implements OnInit {
     productItems: ProductItem[];
     productBaseItems: ProductBaseItem[];
 
-    constructor(private _productService: ProductService) {} 
+    constructor(private _productService: ProductService, @Inject(forwardRef(() => ProductSearchComponent)) private _parent:ProductSearchComponent) {} 
 
     onDeleteProfile(event:Event, productBaseItem: ProductBaseItem, productItem: ProductItem) {
         event.stopPropagation();
         // console.log(productBaseItem);
         // console.log(productItem);
         this._productService.deleteProductItem(productItem, productBaseItem);
+
+
         var prodPrices:number[]=[];
         var prodPricesDest:number[]=[];
+
         for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
                 prodPrices.push(Number(PRODUCT_ITEMS[j].price));
         }
@@ -48,7 +52,8 @@ export class ProductListComponent implements OnInit {
         }
         document.getElementById("totalBaseCash").innerHTML = prodPrices.reduce((a, b) => a + b, 0).toFixed(2).toString();
         document.getElementById("totalBaseCountry").innerHTML = prodPricesDest.reduce((a, b) => a + b, 0).toFixed(2).toString();
-
+        
+        this._parent.reCalc();
         // console.log(prodPrices);
         // console.log(prodPricesDest);
     }
