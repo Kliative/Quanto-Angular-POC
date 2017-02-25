@@ -13,17 +13,35 @@ import { PRODUCT_ITEMS } from './product.data';
     template: `
         <section class="product-list">
             <product-item *ngFor="let productItem of productItems; let i=index" [item]="productItem" id="productItems"></product-item>
-            <span (click)="onDeleteProfile($event, productBaseItem, productItem)" id="delete"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
-            <br>
-            <product-base-item *ngFor="let productBaseItem of productBaseItems; let j=index" [items]="productBaseItem" id="productBaseItems"></product-base-item>
-            
+            <!-- <span (click)="onDeleteProfile($event, productBaseItem, productItem)" id="delete"><i class="fa fa-times-circle" aria-hidden="true"></i></span> -->
+
+                <!-- Modal View-->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                        </div>
+                        <div class="modal-body product-list">
+                                <product-base-item *ngFor="let productBaseItem of productBaseItems; let j=index" [items]="productBaseItem" id="productBaseItems"></product-base-item>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Modal End-->
+
         </section>
     `,
+    styleUrls: ['product-list.component.css']
    
 
 })
 export class ProductListComponent implements OnInit {
-     public totalBaseCash: string;
+     public totalDestCash: string;
      public totalCash: string;
      public totalBaseCountry: string;
 
@@ -50,7 +68,7 @@ export class ProductListComponent implements OnInit {
         for (var i = 0; i < PRODUCT_BASE_ITEMS.length; i++ ) { 
                 prodPricesDest.push(Number(PRODUCT_BASE_ITEMS[i].price));
         }
-        document.getElementById("totalBaseCash").innerHTML = prodPrices.reduce((a, b) => a + b, 0).toFixed(2).toString();
+        document.getElementById("totalDestCash").innerHTML = prodPrices.reduce((a, b) => a + b, 0).toFixed(2).toString();
         document.getElementById("totalBaseCountry").innerHTML = prodPricesDest.reduce((a, b) => a + b, 0).toFixed(2).toString();
         
         this._parent.reCalc();

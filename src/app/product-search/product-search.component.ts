@@ -11,11 +11,12 @@ import { PRODUCT_ITEMS } from './product.data';
 
 @Component({
   selector: 'product-search-root',
-   templateUrl: './product-search.component.html',
+   templateUrl: 'product-search.component.html',
+   styleUrls: ['product-search.component.css']
 })
 
 export class ProductSearchComponent implements OnInit {
-     public totalBaseCash: string;
+     public totalDestCash: string;
      public totalCash: string;
      public totalBaseCountry: string;
 
@@ -35,7 +36,10 @@ export class ProductSearchComponent implements OnInit {
             });
      
     }
-   
+    clearAll(){
+        this._productService.deleteAll();
+        this.reCalc();
+    }
     reCalc(){
         
         this._exchangeService.getEx().subscribe(
@@ -94,13 +98,11 @@ export class ProductSearchComponent implements OnInit {
                                              var baseToDollar = totalCash/destCurrVal;
                                              var finalConv = baseToDollar*baseCurrVal;
 
-                                             document.getElementById("totalBaseCash").innerHTML = totalCash.toFixed(2).toString();
+                                             document.getElementById("totalDestCash").innerHTML = totalCash.toFixed(2).toString();
+                                             document.getElementById("totalDestCash-open").innerHTML = totalCash.toFixed(2).toString();
+                                             
                                              document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-
-                                            //  document.getElementById('delete').onclick = function() {
-                                            //     document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-                                            //     console.log('yeah');
-                                            //  }​;
+                                             
                                 });                               
                             }
                             if(data[i].ISO4217_currency_alphabetic_code == this.listDataForm.controls['listBaseCurrency'].value){
@@ -124,7 +126,7 @@ export class ProductSearchComponent implements OnInit {
                                     var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
 
                                     document.getElementById("totalBaseCountry").innerHTML = totalCash.toFixed(2).toString();
-
+                                    document.getElementById("totalBaseCountry-open").innerHTML = totalCash.toFixed(2).toString();
                                 });                               
                             }
                         }

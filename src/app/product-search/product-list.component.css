@@ -1,0 +1,41 @@
+.modal-footer {
+     border-top:none; 
+}
+/* Portrait 5 */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px)and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+      
+    .product-list {
+        width: 350px;
+    }
+    .modal-body {
+        width: 300px;
+    }
+}
+
+/* Portrait 6 */
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) { 
+
+    .product-list {
+        width: 420px;
+    }
+    .modal-body {
+        width: 380px;
+    }
+
+}
+
+
+/* Portrait 6+ */
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) { 
+
+
+    .product-list {
+        width: 480px;
+    }
+    .modal-body {
+        width: 420px;
+    }
+
+    
+
+}

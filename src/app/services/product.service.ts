@@ -99,7 +99,21 @@ export class ProductService {
         PRODUCT_BASE_ITEMS.splice(PRODUCT_BASE_ITEMS.indexOf(productBaseItem), 1);
     }
 
+    deleteAll(){
+        // PRODUCT_ITEMS.length = 0;
+        // PRODUCT_BASE_ITEMS.length = 0;
 
+            //------ OR ----------
+
+        PRODUCT_ITEMS.splice(0,PRODUCT_ITEMS.length);
+        PRODUCT_BASE_ITEMS.splice(0,PRODUCT_BASE_ITEMS.length);
+
+        document.getElementById("totalBaseCountry").innerHTML = "";
+        document.getElementById("totalBaseCountry-open").innerHTML = "";
+        document.getElementById("totalDestCash").innerHTML = "";
+        document.getElementById("totalDestCash-open").innerHTML = "";
+        document.getElementById("totalCash").innerHTML = "";
+    }
 
     removeFromList(productItem: ProductItem, base: string, dest:string, product:string, range:string) {
 
@@ -144,10 +158,12 @@ export class ProductService {
                                             var baseToDollar = totalCash/destCurrVal;
                                             var finalConv = baseToDollar*baseCurrVal;
 
-                                            var totalBaseCashText = totalCash.toFixed(2);
+                                            var totalDestCashText = totalCash.toFixed(2);
                                             var totalCashText = finalConv.toFixed(2);
 
-                                            document.getElementById("totalBaseCash").innerHTML = totalBaseCashText;
+                                            document.getElementById("totalDestCash").innerHTML = totalDestCashText;
+                                            document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;
+                                            
                                             document.getElementById("totalCash").innerHTML = totalCashText;
 
                                 }); 
@@ -173,8 +189,8 @@ export class ProductService {
                                             var totalBaseCountryText = totalCash.toFixed(2);
 
                                             document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
-
-                                });
+                                            document.getElementById("totalBaseCountry-open").innerHTML = totalBaseCountryText;
+                                }); 
                             }
                         }
 
@@ -216,6 +232,7 @@ export class ProductService {
                                             var totalBaseCountryText = totalCash.toFixed(2);
                                             
                                             document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
+                                            document.getElementById("totalBaseCountry-open").innerHTML = totalBaseCountryText;
 
                                 });
                             }
@@ -239,11 +256,13 @@ export class ProductService {
                                                 var baseToDollar = totalCash/destCurrVal;
                                                 var finalConv = baseToDollar*baseCurrVal;
 
-                                                var totalBaseCashText = totalCash.toFixed(2);
+                                                var totalDestCashText = totalCash.toFixed(2);
                                                 var totalCashText = finalConv.toFixed(2);
 
-                                                document.getElementById("totalBaseCash").innerHTML = totalBaseCashText;
+                                                document.getElementById("totalDestCash").innerHTML = totalDestCashText;
                                                 document.getElementById("totalCash").innerHTML = totalCashText;
+
+                                                document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;
 
                                 }); 
                             }

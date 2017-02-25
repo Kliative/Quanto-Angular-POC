@@ -1,68 +1,213 @@
 
-       <form [formGroup]="listDataForm" novalidate (ngSubmit)="save(listDataForm.value, listDataForm.valid)">
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 ">
-                <div class="well wellColor animated fadeIn"> 
-                <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <select class="form-control" id="listBaseCurSel" formControlName="listBaseCurrency">
-                            <option value="">Select Base Country...</option>
-                            <option id="listCurrentLocOpt"></option>
-                        </select>
-                        <!--<br>-->
-                        <!--<label>Your current location is:</label> <i id="userLoc"></i>-->
-                        </div>
-                </div>
-                <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <select class="form-control" id="listDestCurSel" formControlName="listDestinationCurrency"> 
-                            <option value="">Select Destination Country...</option>
-                            
-                        </select>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <!--<input type="text" class="form-control" id="product" #product>-->
-                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">In base Country: <span id="totalBaseCountry"></span></pre>
-                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Total destCurr: <span id="totalBaseCash"></span></pre>
-                                <pre class="col-sx-4 col-sm-4 col-md-4 col-lg-4">Total baseCurr: <span id="totalCash"></span></pre>
-                            <hr>
-                            <product-list></product-list>
-                            <hr>
-                            <div class="row">
-                                <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
-                                <select class="form-control" id="sDProdSel" formControlName="product" #product>
-                                            <option value="">Select Product...</option>
-                                            <option value="McMeal">McMeal at McDonalds</option>
-                                            <option value="DomBeer">Domestic Beer</option>
-                                            <option value="ImpBeer">Imported Beer</option>
-                                            <option value="Coke">Coke</option>
-                                            <option value="WineBottle">Wine Bottle</option>
-                                            <option value="PackSmokes">Pack Smokes</option>
-                                            <option value="OneWayTicket">One Way Travel Ticket</option>
-                                            <option value="MovieTicket">Movie Tickt (1 person)</option>
-                                </select>
-                                <select class="form-control" id="sDProdRangeSel" formControlName="productRange" #productRange>
-                                            <option value="">Select Product...</option>
-                                            <option value="high">High</option>
-                                            <option value="norm">Medium</option>
-                                            <option value="low">Low</option>
-                                </select>
+<form [formGroup]="listDataForm" novalidate (ngSubmit)="save(listDataForm.value, listDataForm.valid)">
+
+<div id="wrapper" class="grocery-countrySel">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon-list"></div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-1 col-sm-1  col-md-4 col-lg-4"></div>
+                <div class="col-xs-10 col-sm-10  col-md-4 col-lg-4">
+                    <div class="compare-form">
+                            <div class="currLocSelection">
+                                <div class="select-icons">
+                                    <img src="/assets/img/currLoc-icon.svg" alt="">
                                 </div>
-                                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <button class="btn btn-success" id="addBtn" type="button" (click)="onAddProd(listDataForm.value)">Add</button>
-                                
+                                <div class="select-input">
+                                    <select name="" id="listBaseCurSel" class="select-input-select" formControlName="listBaseCurrency">
+                                        <option value="">Current Location</option>
+                                    </select>
                                 </div>
                             </div>
-                              
-                        </div>
+                            <div class="plane-icon" style="margin-left: 1em;">
+
+                            </div>
+                            <div class="currLocSelection" style="margin-bottom:3em">
+                                <div class="select-icons">
+                                    <img src="/assets/img/currLoc-icon.svg" alt="">
+                                </div>
+                                <div class="select-input">
+                                    <select name="" id="listDestCurSel" class="select-input-select" formControlName="listDestinationCurrency">
+                                        <option value="">Destination Location</option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
+                    
+                        
                 </div>
-            </div>   
+                <div class="col-xs-1 col-sm-1 col-md-4 col-lg-4"></div>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
+                
+                <div id="grocery-countryBtn" (click)="reCalc()" class="btn-div"></div>
+                
+            </div>
+        </div>
+</div>
+<!--
+
+List Section
+
+-->
+
+
+    <div id="wrapper" class="grocery-list-section">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon-list"></div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+                    <div class="list-box">
+                            <div class="conv-box-image" id="reSelCountry" (click)="clearAll()">
+                                    <div class="conversionCountries">
+                                                <div id="baseCur-list">MUR</div>
+                                                <div class="conversionCountries-img"></div>
+                                                <div id="destCur-list">ZAR</div>
+                                    </div>
+                            </div>
+                            <div id="listTotals" class="reveal-closed">
+                                    
+                                    <!-- Closed -->
+                                    <div class="convertedBlock" id="closedTotalBox">
+                                        <div class="container">
+                                            <div class="row">
+                                            <div class="col-xs-6">
+                                                <p>Total in <span class="smallTotals"><span id="totalBaseCountry-currCode">ZAR</span>: <span id="totalBaseCountry"></span></span></p>
+                                            </div> 
+                                            <div class="col-xs-6">
+                                               <p>Total in <span class="smallTotals"><span id="totalDestCash-currCode">GBP</span>: <span id="totalDestCash"></span></span></p>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Open -->
+                                    <div class="convertedBlock" id="openTotalBox">
+                                        <div class="container">
+                                            <div class="row">
+                                            <div class="col-xs-7">
+                                                <p>These product will cost you:</p>
+                                                <div class="convCash"><span id="totalBaseCountry-open-currSymbol">R</span><span id="totalCash"></span></div>
+                                                <p>in South Africa they cost:</p>
+                                                <button type="button" class="basePrices" data-toggle="modal" data-target="#myModal"><span id="totalBaseCountry-open-currSymbol-basecountry">R</span><span id="totalBaseCountry-open"></span></button>
+                                            </div> 
+                                            <div class="col-xs-5">
+                                                <div class="list-total">
+                                                    <p class="totalTxt">Total</p>
+                                                    <p class="totalAmount"><span id="totalDestCash-currSymbol">£</span> <span id="totalDestCash-open"></span></p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                            <!-- Table -->
+                            <div class="container" id="table-headings">
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4">
+                                        Product
+                                    </div>
+                                    <div class="col-xs-2 col-sm-2">
+                                        Range
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3">
+                                        Quantity    
+                                    </div> 
+                                    <div class="col-xs-3 col-sm-3">
+                                        Price
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="container table-content-height-big" id="table-content">
+                                <div class="row">
+
+                                    <product-list></product-list>
+                                    <!--<div class="product-cell">
+                                        <div class="col-xs-4 col-sm-4 product-text">
+                                             Domestic Beer 
+                                        </div>
+                                        <div class="col-xs-2 col-sm-2 range-text">
+                                             <span class="product-range">
+                                                 <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                                 <i class="fa fa-bed" aria-hidden="true"></i>
+                                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+                                             </span>
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 quantity-text">
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                            <span class="product-quantity">33</span>
+                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                        </div> 
+                                        <div class="col-xs-3 col-sm-3">
+                                            <span class="currSymbol-list">£</span>5000.00
+                                        </div>    
+                                    </div>-->
+
+                                </div>
+                            </div>
+                    </div>
+                    
+                        
+                </div>
+                <div class="col-md-4 col-lg-4"></div>
+            </div>
+        </div>  
+
+        <!-- Button -->
+        <div class="container">
+            <div class="row">
+                
+                <div class="btn-div-list-drop">
+                    <div class="select-input">
+                        <select class="form-control" id="sDProdSel" class="select-input-select-list-list" formControlName="product" #product>
+                            <option value="">Select Product...</option>
+                            <option value="McMeal">McMeal at McDonalds</option>
+                            <option value="DomBeer">Domestic Beer</option>
+                            <option value="ImpBeer">Imported Beer</option>
+                            <option value="Coke">Coke</option>
+                            <option value="WineBottle">Wine Bottle</option>
+                            <option value="PackSmokes">Pack Smokes</option>
+                            <option value="OneWayTicket">One Way Travel Ticket</option>
+                            <option value="MovieTicket">Movie Tickt (1 person)</option>
+                        </select>
+                        <br>
+                        <select name="" id="sDProdRangeSel" class="select-input-select-list-list" formControlName="productRange" #productRange>
+                            <option value="">Select Product...</option>
+                            <option value="high">High</option>
+                            <option value="norm">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    
+                        <div class="btn-div-list" id="addBtn" (click)="onAddProd(listDataForm.value)"></div>
+                </div>
+                   
+            </div>
+        </div>
+
+
+    </div>
+
 
         </form>
 
         <!--<div class="margin-20">
             <pre>myForm value: <br>{{listDataForm.value | json}}</pre>
         </div>-->
+
+        

@@ -9,7 +9,7 @@
         $('#quantoDetSect').hide();
         
         $('.quant-p2').hide();
-        
+        $('.grocery-list-section').hide();
 
 $(window).load(function() {
 
@@ -18,6 +18,17 @@ $(window).load(function() {
 
     //amke window scroll down
     $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+
+    //Grocery List Selection
+    $list_baseCurSel_option_selected = $("#listBaseCurSel");
+    $list_destCurSel_option_selected = $("#listDestCurSel");
+
+
+    $list_baseCurSel_option_selected.change(function() {  listBaseCurSel = $(this).val(); });
+    $list_destCurSel_option_selected.change(function() {  listDestCurSel = $(this).val(); });
+
+    listBaseCurSel = $list_baseCurSel_option_selected.val();
+    listDestCurSel = $list_destCurSel_option_selected.val();
 
     // dropdown select
     $baseCurSel_option_selected = $("#baseCurSel");
@@ -57,7 +68,8 @@ $(window).load(function() {
    
       
     //Country Codes
-    $.getJSON('/assets/js/countryJSON/product_rangetest.json', function(ccData) {    
+    $.getJSON('/assets/js/countryJSON/product_rangetest.json', function(ccData) {
+
     $('#reQauntoCalc').click(function(){
         $('.quant-p2').fadeOut('slow');
         $('.quant-p1').fadeIn('slow');
@@ -141,10 +153,39 @@ $(window).load(function() {
             }
 
     });                       
+    $('#grocery-countryBtn').click(function(){
+        $('.grocery-countrySel').fadeOut('slow');
+        $('.grocery-list-section').fadeIn('slow');
+
+        for (var i = 0; i < ccData.length; i++){
+
+            if (ccData[i].products){
+
+                if (ccData[i].ISO4217_currency_alphabetic_code == listBaseCurSel){
+
+                    $("#totalBaseCountry-open-currSymbol").html(ccData[i].ISO4217_currency_symbol);
+                    $("#totalBaseCountry-open-currSymbol-basecountry").html(ccData[i].ISO4217_currency_symbol);
+                    $("#totalBaseCountry-currCode").html(ccData[i].ISO4217_currency_alphabetic_code);
+                    $("#baseCur-list").html(ccData[i].ISO4217_currency_alphabetic_code);
+
+                }    
+            
+                if (ccData[i].ISO4217_currency_alphabetic_code == listDestCurSel){
+
+                    $("#totalDestCash-currSymbol").html(ccData[i].ISO4217_currency_symbol);
+                    $("#totalDestCash-currCode").html(ccData[i].ISO4217_currency_alphabetic_code);
+                    $("#destCur-list").html(ccData[i].ISO4217_currency_alphabetic_code);
+                } 
+
+            }
+        }
+    });
+    $('#reSelCountry').click(function(){
+        $('.grocery-list-section').fadeOut('slow');
+        $('.grocery-countrySel').fadeIn('slow');
 
 
-
-
+    });
 
                     $('#loader-wrapper').fadeOut('slow');
                     
@@ -168,11 +209,13 @@ $(window).load(function() {
                             value: countryCurrencyCode,
                             text: countryName
                         }));
+
                         // Posting
                         $("#postCountrySel").append($('<option>', {
                           value: countryCurrencyCode,
                           text: countryName
                         }));
+
                         //Grocery List
                         $("#listBaseCurSel").append($('<option>', {
                           value: countryCurrencyCode,
