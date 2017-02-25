@@ -103,53 +103,32 @@ export class ProductService {
 
     removeFromList(productItem: ProductItem, base: string, dest:string, product:string, range:string) {
 
-        
-         
         var indexNumb = PRODUCT_ITEMS.indexOf(productItem);
-
-        // console.log(productItem);   
-        // console.log(PRODUCT_ITEMS[indexNumb].price / PRODUCT_ITEMS[indexNumb].quantity);
 
         if(PRODUCT_ITEMS[indexNumb].quantity == 1 ){
             PRODUCT_ITEMS.splice(indexNumb, 1);   
         } else {
             PRODUCT_ITEMS[indexNumb].quantity = PRODUCT_ITEMS[indexNumb].quantity - 1;
-            // PRODUCT_ITEMS[indexNumb].price = PRODUCT_ITEMS[indexNumb].price / PRODUCT_ITEMS[indexNumb].quantity;
+            
         }
         
         if( PRODUCT_BASE_ITEMS[indexNumb].quantity == 1 ){
             PRODUCT_BASE_ITEMS.splice(indexNumb, 1);
         } else {
             PRODUCT_BASE_ITEMS[indexNumb].quantity = PRODUCT_BASE_ITEMS[indexNumb].quantity - 1;
-            // PRODUCT_BASE_ITEMS[indexNumb].price = PRODUCT_BASE_ITEMS[indexNumb].price / PRODUCT_BASE_ITEMS[indexNumb].quantity;
+            
         }
 
         this.searchData().subscribe(
                     data => {
                         for (var i = 0; i < data.length; i++) { 
-                            if(data[i].ISO4217_currency_alphabetic_code == base){
-                                var country = data[i];
-                                PRODUCT_BASE_ITEMS[indexNumb].price = PRODUCT_BASE_ITEMS[indexNumb].price - country.products[product][range].p;
-
-                                var baseProdPrices:number[]=[];
-
-                                for (var j = 0; j < PRODUCT_BASE_ITEMS.length; j++ ) { 
-                                        baseProdPrices.push(Number(PRODUCT_BASE_ITEMS[j].price));
-                                }
-                                
-                                this._exchangeService.getEx().subscribe(
-                                        data => {
-
-                                    var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
-
-                                    document.getElementById("totalBaseCountry").innerHTML = totalCash.toFixed(2).toString();
-
-                                });
-                            }
+                            
                             if(data[i].ISO4217_currency_alphabetic_code == dest){
                                 var country = data[i];
-                                PRODUCT_ITEMS[indexNumb].price = PRODUCT_ITEMS[indexNumb].price - country.products[product][range].p;
+
+                                PRODUCT_ITEMS[indexNumb].price = Number(PRODUCT_ITEMS[indexNumb].price) - Number(country.products[PRODUCT_ITEMS[indexNumb].product][range].p);
                                 var prodPrices:number[]=[];
+
 
                                 for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
                                         prodPrices.push(Number(PRODUCT_ITEMS[j].price));
@@ -161,18 +140,41 @@ export class ProductService {
                                             var totalCash = prodPrices.reduce((a, b) => a + b, 0);
                                             var baseCurrVal = data.rates[base];
                                             var destCurrVal = data.rates[dest];
-                                           
-                                             var baseToDollar = totalCash/destCurrVal;
-                                             var finalConv = baseToDollar*baseCurrVal;
 
-                                             document.getElementById("totalBaseCash").innerHTML = totalCash.toFixed(2).toString();
-                                             document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                            var baseToDollar = totalCash/destCurrVal;
+                                            var finalConv = baseToDollar*baseCurrVal;
 
-                                            //  document.getElementById('delete').onclick = function() {
-                                            //     document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-                                            //     console.log('yeah');
-                                            //  }​;
+                                            var totalBaseCashText = totalCash.toFixed(2);
+                                            var totalCashText = finalConv.toFixed(2);
+
+                                            document.getElementById("totalBaseCash").innerHTML = totalBaseCashText;
+                                            document.getElementById("totalCash").innerHTML = totalCashText;
+
                                 }); 
+                            }
+                            if(data[i].ISO4217_currency_alphabetic_code == base){
+
+                                var country = data[i];
+
+
+                                PRODUCT_BASE_ITEMS[indexNumb].price = Number(PRODUCT_BASE_ITEMS[indexNumb].price) - Number(country.products[PRODUCT_BASE_ITEMS[indexNumb].product][range].p);
+                                var baseProdPrices:number[]=[];
+
+                                for (var j = 0; j < PRODUCT_BASE_ITEMS.length; j++ ) { 
+                                    
+                                        baseProdPrices.push(Number(PRODUCT_BASE_ITEMS[j].price));
+                                }
+                                
+                                this._exchangeService.getEx().subscribe(
+                                        data => {
+
+                                            var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
+
+                                            var totalBaseCountryText = totalCash.toFixed(2);
+
+                                            document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
+
+                                });
                             }
                         }
 
@@ -182,23 +184,22 @@ export class ProductService {
     }
 
     addToList(productItem: ProductItem, base: string, dest:string, product:string, range:string) {
-
-        
-         
-             var indexNumb = PRODUCT_ITEMS.indexOf(productItem);
       
-            PRODUCT_ITEMS[indexNumb].quantity = PRODUCT_ITEMS[indexNumb].quantity + 1;
-        
-            PRODUCT_BASE_ITEMS[indexNumb].quantity = PRODUCT_BASE_ITEMS[indexNumb].quantity + 1;
+        var indexNumb = PRODUCT_ITEMS.indexOf(productItem);
 
-       
+        PRODUCT_ITEMS[indexNumb].quantity = PRODUCT_ITEMS[indexNumb].quantity + 1;
+
+        PRODUCT_BASE_ITEMS[indexNumb].quantity = PRODUCT_BASE_ITEMS[indexNumb].quantity + 1;
 
         this.searchData().subscribe(
                     data => {
                         for (var i = 0; i < data.length; i++) { 
                             if(data[i].ISO4217_currency_alphabetic_code == base){
                                 var country = data[i];
-                                PRODUCT_BASE_ITEMS[indexNumb].price = Number(PRODUCT_BASE_ITEMS[indexNumb].price) + Number(country.products[product][range].p);
+
+                               
+
+                                PRODUCT_BASE_ITEMS[indexNumb].price = Number(PRODUCT_BASE_ITEMS[indexNumb].price) + Number(country.products[PRODUCT_BASE_ITEMS[indexNumb].product][range].p);
 
                                 var baseProdPrices:number[]=[];
 
@@ -209,15 +210,19 @@ export class ProductService {
                                 this._exchangeService.getEx().subscribe(
                                         data => {
 
-                                    var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
+                                            var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
 
-                                    document.getElementById("totalBaseCountry").innerHTML = totalCash.toFixed(2).toString();
+
+                                            var totalBaseCountryText = totalCash.toFixed(2);
+                                            
+                                            document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
 
                                 });
                             }
                             if(data[i].ISO4217_currency_alphabetic_code == dest){
+
                                 var country = data[i];
-                                PRODUCT_ITEMS[indexNumb].price = Number(PRODUCT_ITEMS[indexNumb].price) + Number(country.products[product][range].p);
+                                PRODUCT_ITEMS[indexNumb].price = Number(PRODUCT_ITEMS[indexNumb].price) + Number(country.products[PRODUCT_ITEMS[indexNumb].product][range].p);
                                 var prodPrices:number[]=[];
 
                                 for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
@@ -227,23 +232,23 @@ export class ProductService {
                                 this._exchangeService.getEx().subscribe(
                                         data => {
                                                   
-                                            var totalCash = prodPrices.reduce((a, b) => a + b, 0);
-                                            var baseCurrVal = data.rates[base];
-                                            var destCurrVal = data.rates[dest];
-                                           
-                                             var baseToDollar = totalCash/destCurrVal;
-                                             var finalConv = baseToDollar*baseCurrVal;
+                                                var totalCash = prodPrices.reduce((a, b) => a + b, 0);
+                                                var baseCurrVal = data.rates[base];
+                                                var destCurrVal = data.rates[dest];
+                                            
+                                                var baseToDollar = totalCash/destCurrVal;
+                                                var finalConv = baseToDollar*baseCurrVal;
 
-                                             document.getElementById("totalBaseCash").innerHTML = totalCash.toFixed(2).toString();
-                                             document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                                var totalBaseCashText = totalCash.toFixed(2);
+                                                var totalCashText = finalConv.toFixed(2);
 
+                                                document.getElementById("totalBaseCash").innerHTML = totalBaseCashText;
+                                                document.getElementById("totalCash").innerHTML = totalCashText;
 
                                 }); 
                             }
                         }
-
         });
-        
 
     }
 
