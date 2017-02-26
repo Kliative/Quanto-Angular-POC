@@ -96,7 +96,8 @@ $(window).load(function() {
                 if (ccData[i].ISO4217_currency_alphabetic_code == destCurSelection){
 
                     $("#destCurrSymbol").html(ccData[i].ISO4217_currency_symbol);
-
+                    $("#destPriceHighCurrSymbol").html(ccData[i].ISO4217_currency_symbol);
+                    $("#destPriceLowCurrSymbol").html(ccData[i].ISO4217_currency_symbol);
                 } 
 
             }
@@ -190,8 +191,10 @@ $(window).load(function() {
 
 
     });
-
+ 
     $('#groceryPage').hide();
+
+
     // Menu hack
     $('#quantoPage-Btn').click(function(){
         $('#groceryPage').fadeOut('slow');

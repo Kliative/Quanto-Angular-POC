@@ -64,7 +64,13 @@ export class QuantoComponent implements OnInit {
                               if(data[i].ISO4217_currency_alphabetic_code == this.quantoForm.controls['destinationCurrency'].value){
                               
                                 var destCom = data[i].products[this.quantoForm.controls['product'].value]['norm']['p'];
+
+                                var destComLow = data[i].products[this.quantoForm.controls['product'].value]['norm']['l'];
+                                var destComHigh = data[i].products[this.quantoForm.controls['product'].value]['norm']['h'];
                                 
+                                document.getElementById("destPriceLowTxt").innerHTML = destComLow;
+                                document.getElementById("destPriceHighTxt").innerHTML = destComHigh;
+
                                 document.getElementById("destPriceTxt").innerHTML = destCom;
                                 document.getElementById("destPriceTxtEX").innerHTML = destCom;
                                 document.getElementById("destCoName").innerHTML = data[i].name;
