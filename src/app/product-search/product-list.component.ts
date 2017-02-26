@@ -69,7 +69,7 @@ export class ProductListComponent implements OnInit {
                 prodPricesDest.push(Number(PRODUCT_BASE_ITEMS[i].price));
         }
         document.getElementById("totalDestCash").innerHTML = prodPrices.reduce((a, b) => a + b, 0).toFixed(2).toString();
-        document.getElementById("totalBaseCountry").innerHTML = prodPricesDest.reduce((a, b) => a + b, 0).toFixed(2).toString();
+        document.getElementById("totalBaseCountry-open").innerHTML = prodPricesDest.reduce((a, b) => a + b, 0).toFixed(2).toString();
         
         this._parent.reCalc();
         // console.log(prodPrices);

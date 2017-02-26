@@ -1,6 +1,17 @@
+.modal-header {
+    color: #fff;
+    background: #681313;
+    background: -webkit-linear-gradient(left top, #681313, #FF0100);
+    background: -webkit-linear-gradient(top left, #681313, #FF0100);
+    background: linear-gradient(to bottom right, #681313, #FF0100);
+}
+.modal-content {
+    
+}
 .modal-footer {
      border-top:none; 
 }
+
 /* Portrait 5 */
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px)and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
       
@@ -23,7 +34,6 @@
     }
 
 }
-
 
 /* Portrait 6+ */
 @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) { 

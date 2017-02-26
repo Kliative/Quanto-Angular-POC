@@ -167,7 +167,7 @@ $(window).load(function() {
                     $("#totalBaseCountry-open-currSymbol-basecountry").html(ccData[i].ISO4217_currency_symbol);
                     $("#totalBaseCountry-currCode").html(ccData[i].ISO4217_currency_alphabetic_code);
                     $("#baseCur-list").html(ccData[i].ISO4217_currency_alphabetic_code);
-
+                    $(".modal-title").html("Product Prices in "+ccData[i].name);
                 }    
             
                 if (ccData[i].ISO4217_currency_alphabetic_code == listDestCurSel){
@@ -175,6 +175,10 @@ $(window).load(function() {
                     $("#totalDestCash-currSymbol").html(ccData[i].ISO4217_currency_symbol);
                     $("#totalDestCash-currCode").html(ccData[i].ISO4217_currency_alphabetic_code);
                     $("#destCur-list").html(ccData[i].ISO4217_currency_alphabetic_code);
+
+                    // $(".currSymbol-list").html(ccData[i].ISO4217_currency_symbol);
+                    $(".currSymbol-list").hide();
+                 
                 } 
 
             }

@@ -60,7 +60,7 @@ export class ProductSearchComponent implements OnInit {
 
                                              
                                              document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-
+                                             document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
                                             
                                 }); 
     }
@@ -102,6 +102,7 @@ export class ProductSearchComponent implements OnInit {
                                              document.getElementById("totalDestCash-open").innerHTML = totalCash.toFixed(2).toString();
                                              
                                              document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                             document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
                                              
                                 });                               
                             }
@@ -125,7 +126,7 @@ export class ProductSearchComponent implements OnInit {
 
                                     var totalCash = baseProdPrices.reduce((a, b) => a + b, 0);
 
-                                    document.getElementById("totalBaseCountry").innerHTML = totalCash.toFixed(2).toString();
+                                    
                                     document.getElementById("totalBaseCountry-open").innerHTML = totalCash.toFixed(2).toString();
                                 });                               
                             }

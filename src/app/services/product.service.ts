@@ -62,6 +62,9 @@ export class ProductService {
     addProductBaseItem(productBaseItem: ProductBaseItem){
         var found = PRODUCT_ITEMS.some(function (el) {
             return el.product === productBaseItem.product;
+        });
+        var foundRange = PRODUCT_ITEMS.some(function (el) {
+            return el.product === productBaseItem.product;
         });   
         //if array empty push object
         if(PRODUCT_BASE_ITEMS.length == 0){
@@ -70,7 +73,16 @@ export class ProductService {
                 for (var i in PRODUCT_BASE_ITEMS ) {
                     // if not in array add
                     if (PRODUCT_BASE_ITEMS[i].product !== productBaseItem.product) {
+
+                        var product = PRODUCT_BASE_ITEMS[i].product;
+                        
+                        console.log(product);
+
                         if (!found) { 
+                            for (var i in PRODUCT_BASE_ITEMS ) {
+                            
+                            }
+
                         PRODUCT_BASE_ITEMS.push({product: productBaseItem.product, range: productBaseItem.range, quantity: productBaseItem.quantity, price: productBaseItem.price });
 
                         break;  
@@ -108,11 +120,12 @@ export class ProductService {
         PRODUCT_ITEMS.splice(0,PRODUCT_ITEMS.length);
         PRODUCT_BASE_ITEMS.splice(0,PRODUCT_BASE_ITEMS.length);
 
-        document.getElementById("totalBaseCountry").innerHTML = "";
+        
         document.getElementById("totalBaseCountry-open").innerHTML = "";
         document.getElementById("totalDestCash").innerHTML = "";
         document.getElementById("totalDestCash-open").innerHTML = "";
         document.getElementById("totalCash").innerHTML = "";
+        document.getElementById("totalCash-open").innerHTML = "";
     }
 
     removeFromList(productItem: ProductItem, base: string, dest:string, product:string, range:string) {
@@ -165,6 +178,7 @@ export class ProductService {
                                             document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;
                                             
                                             document.getElementById("totalCash").innerHTML = totalCashText;
+                                            document.getElementById("totalCash-open").innerHTML = totalCashText;
 
                                 }); 
                             }
@@ -188,7 +202,7 @@ export class ProductService {
 
                                             var totalBaseCountryText = totalCash.toFixed(2);
 
-                                            document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
+                                            
                                             document.getElementById("totalBaseCountry-open").innerHTML = totalBaseCountryText;
                                 }); 
                             }
@@ -231,7 +245,7 @@ export class ProductService {
 
                                             var totalBaseCountryText = totalCash.toFixed(2);
                                             
-                                            document.getElementById("totalBaseCountry").innerHTML = totalBaseCountryText;
+                                            
                                             document.getElementById("totalBaseCountry-open").innerHTML = totalBaseCountryText;
 
                                 });
@@ -261,6 +275,7 @@ export class ProductService {
 
                                                 document.getElementById("totalDestCash").innerHTML = totalDestCashText;
                                                 document.getElementById("totalCash").innerHTML = totalCashText;
+                                                document.getElementById("totalCash-open").innerHTML = totalCashText;
 
                                                 document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;
 
