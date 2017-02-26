@@ -13,6 +13,11 @@ import { ExchangeService } from './services/exchange.service'
 import { ProductService } from './services/product.service';
 import { ProductSendComponent } from './product-send/product-send.component';
 import { QuantoComponent } from './quanto/quanto.component';
+import { MenuComponent } from './menu.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,8 @@ import { QuantoComponent } from './quanto/quanto.component';
     ProductBaseItemComponent,
     ProductSearchComponent,
     ProductSendComponent,
-    QuantoComponent
+    QuantoComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

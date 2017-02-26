@@ -1,0 +1,64 @@
+<div class="menu-block" id="openNav">
+&#9776;
+</div>
+
+
+<div id="mySidenav" class="sidenav">
+  <a class="closebtn" id="closeNav">&times;</a>
+ <a id="quantoPage-Btn"> Quanto </a>
+  <a id="groceryPage-Btn"> Grocery List </a>
+</div>
+
+<style>
+  .menu-block{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em;
+  }
+
+  .sidenav {
+    color: #fff;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+        background: #681313; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(left top, #681313, #FF0100); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, #681313, #FF0100); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, #681313, #FF0100); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, #681313, #FF0100); /* Standard syntax */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align:center;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s
+
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+

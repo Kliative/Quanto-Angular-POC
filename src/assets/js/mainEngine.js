@@ -191,6 +191,28 @@ $(window).load(function() {
 
     });
 
+    $('#groceryPage').hide();
+    // Menu hack
+    $('#quantoPage-Btn').click(function(){
+        $('#groceryPage').fadeOut('slow');
+        $('#quantoPage').fadeIn('slow');
+        document.getElementById("mySidenav").style.width = "0";
+    });
+    $('#groceryPage-Btn').click(function(){
+        $('#quantoPage').fadeOut('slow');
+        $('#groceryPage').fadeIn('slow');
+        document.getElementById("mySidenav").style.width = "0";
+    });
+
+    $('#openNav').click(function(){
+        document.getElementById("mySidenav").style.width = "100%";
+    });
+
+    $('#closeNav').click(function(){
+        document.getElementById("mySidenav").style.width = "0";
+    });
+
+
                     $('#loader-wrapper').fadeOut('slow');
                     
 
