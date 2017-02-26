@@ -52,7 +52,7 @@
                                         <option value="WineBottle">Wine Bottle</option>
                                         <option value="PackSmokes">Pack Smokes</option>
                                         <option value="OneWayTicket">One Way Travel Ticket</option>
-                                        <option value="MovieTicket">Movie Tickt (1 person)</option>
+                                        <option value="MovieTicket">Movie Ticket (1 person)</option>
                                     </select>
                                 </div>
                             </div>
@@ -107,7 +107,14 @@
                             </div>
                             <div class="compare-details">
                                 <div class="compare-prod-icon">
-                                    <img src="../assets/img/can-icon.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'McMeal'" src="../assets/img/burger.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'DomBeer'" src="../assets/img/dombeer.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'ImpBeer'" src="../assets/img/intbeer.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'Coke'" src="../assets/img/coke.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'WineBottle'" src="../assets/img/wine.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'PackSmokes'" src="../assets/img/smokes.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'OneWayTicket'" src="../assets/img/onewayTicket.png" alt="">
+                                    <img *ngIf="quantoForm.controls.product.value == 'MovieTicket'" src="../assets/img/movieTicket.png" alt="">
                                 </div>
                                 <p class="detail-price">
                                     <span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span>
