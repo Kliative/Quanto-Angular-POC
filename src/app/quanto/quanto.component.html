@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="select-input">
                                     <select id="baseCurSel" class="select-input-select" formControlName="baseCurrency">
-                                        <option value="">Current Location</option>
+                                        <option value="">Select Current Location...</option>
                                         
                                     </select>
                                 </div>
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="select-input">
                                     <select id="destCurSel" class="select-input-select"  formControlName="destinationCurrency"> 
-                                        <option value="">Destination Location</option>
+                                        <option value="">Select Destination Location...</option>
                                     </select>
                                 </div>
                             </div>
@@ -45,12 +45,14 @@
                                 <div class="select-input">
                                     <select id="prodSel" class="select-input-select" formControlName="product">
                                         <option value="">Select Product...</option>
+                                        <option value="Meal">Meal at Restaurant</option>
                                         <option value="McMeal">McMeal at McDonalds</option>
+                                        <option value="Meal">Meal at Restaurant</option>
                                         <option value="DomBeer">Domestic Beer</option>
                                         <option value="ImpBeer">Imported Beer</option>
                                         <option value="Coke">Soft Drink (Can)</option>
                                         <option value="WineBottle">Wine Bottle</option>
-                                        <option value="PackSmokes">Cigarette</option>
+                                        <option value="PackSmokes">Cigarettes (20 box)</option>
                                         <option value="OneWayTicket">One Way Travel Ticket</option>
                                         <option value="MovieTicket">Movie Ticket (1 person)</option>
                                     </select>
@@ -107,6 +109,7 @@
                             </div>
                             <div class="compare-details">
                                 <div class="compare-prod-icon">
+                                    <img *ngIf="quantoForm.controls.product.value == 'Meal'" src="../assets/img/meal.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'McMeal'" src="../assets/img/burger.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'DomBeer'" src="../assets/img/dombeer.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'ImpBeer'" src="../assets/img/intbeer.png" alt="">
@@ -114,7 +117,7 @@
                                     <img *ngIf="quantoForm.controls.product.value == 'WineBottle'" src="../assets/img/wine.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'PackSmokes'" src="../assets/img/smokes.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'OneWayTicket'" src="../assets/img/onewayTicket.png" alt="">
-                                    <img *ngIf="quantoForm.controls.product.value == 'MovieTicket'" src="../assets/img/movieTicket.png" alt="">
+                                    <!--<img *ngIf="quantoForm.controls.product.value == 'MovieTicket'" src="../assets/img/movieTicket.png" alt="">-->
                                 </div>
                                 <p class="detail-price">
                                     <span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span>

@@ -122,9 +122,9 @@ export class ProductService {
 
         
         document.getElementById("totalBaseCountry-open").innerHTML = "";
-        document.getElementById("totalDestCash").innerHTML = "";
+        // document.getElementById("totalDestCash").innerHTML = "";
         document.getElementById("totalDestCash-open").innerHTML = "";
-        document.getElementById("totalCash").innerHTML = "";
+        // document.getElementById("totalCash").innerHTML = "";
         document.getElementById("totalCash-open").innerHTML = "";
     }
 
@@ -174,10 +174,10 @@ export class ProductService {
                                             var totalDestCashText = totalCash.toFixed(2);
                                             var totalCashText = finalConv.toFixed(2);
 
-                                            document.getElementById("totalDestCash").innerHTML = totalDestCashText;
+                                            // document.getElementById("totalDestCash").innerHTML = totalDestCashText;
                                             document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;
                                             
-                                            document.getElementById("totalCash").innerHTML = totalCashText;
+                                            // document.getElementById("totalCash").innerHTML = totalCashText;
                                             document.getElementById("totalCash-open").innerHTML = totalCashText;
 
                                 }); 
@@ -273,8 +273,8 @@ export class ProductService {
                                                 var totalDestCashText = totalCash.toFixed(2);
                                                 var totalCashText = finalConv.toFixed(2);
 
-                                                document.getElementById("totalDestCash").innerHTML = totalDestCashText;
-                                                document.getElementById("totalCash").innerHTML = totalCashText;
+                                                // document.getElementById("totalDestCash").innerHTML = totalDestCashText;
+                                                // document.getElementById("totalCash").innerHTML = totalCashText;
                                                 document.getElementById("totalCash-open").innerHTML = totalCashText;
 
                                                 document.getElementById("totalDestCash-open").innerHTML = totalDestCashText;

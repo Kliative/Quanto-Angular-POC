@@ -81,10 +81,10 @@ List Section
                                                 <div id="destCur-list">ZAR</div>
                                     </div>
                             </div>
-                            <div id="listTotals" class="reveal-closed">
+                            <div id="listTotals" class="reveal-open">
                                     
-                                    <!-- Closed -->
-                                    <div class="convertedBlock" id="closedTotalBox">
+                                    <!-- Closed --> 
+                                    <!--<div class="convertedBlock" id="closedTotalBox">
                                         <div class="container">
                                             <div class="row">
                                             <div class="col-xs-6">
@@ -95,7 +95,7 @@ List Section
                                             </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <!-- Open -->
                                     <div class="convertedBlock" id="openTotalBox">
                                         <div class="container">
@@ -133,7 +133,7 @@ List Section
                                     </div> 
                                 </div>
                             </div>
-                            <div class="container table-content-height-big" id="table-content">
+                            <div class="container table-content-height-small" id="table-content">
                                 <div class="row">
 
                                     <product-list></product-list>
@@ -176,12 +176,13 @@ List Section
                     <div class="select-input">
                         <select class="form-control" id="sDProdSel" class="select-input-select-list-list" formControlName="product" #product>
                             <option value="">Select Product...</option>
+                            <option value="Meal">Meal at Restaurant</option>
                             <option value="McMeal">McMeal at McDonalds</option>
                             <option value="DomBeer">Domestic Beer</option>
                             <option value="ImpBeer">Imported Beer</option>
-                            <option value="Coke">Coke</option>
+                            <option value="Coke">Coke Can</option>
                             <option value="WineBottle">Wine Bottle</option>
-                            <option value="PackSmokes">Pack Smokes</option>
+                            <option value="PackSmokes">Cigarettes (20 box)</option>
                             <option value="OneWayTicket">One Way Travel Ticket</option>
                             <option value="MovieTicket">Movie Tickt (1 person)</option>
                         </select>

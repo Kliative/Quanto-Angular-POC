@@ -59,7 +59,7 @@ export class ProductSearchComponent implements OnInit {
                                              var finalConv = baseToDollar*baseCurrVal;
 
                                              
-                                             document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                            //  document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
                                              document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
                                             
                                 }); 
@@ -98,10 +98,10 @@ export class ProductSearchComponent implements OnInit {
                                              var baseToDollar = totalCash/destCurrVal;
                                              var finalConv = baseToDollar*baseCurrVal;
 
-                                             document.getElementById("totalDestCash").innerHTML = totalCash.toFixed(2).toString();
+                                            //  document.getElementById("totalDestCash").innerHTML = totalCash.toFixed(2).toString();
                                              document.getElementById("totalDestCash-open").innerHTML = totalCash.toFixed(2).toString();
                                              
-                                             document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                                            //  document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
                                              document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
                                              
                                 });                               
