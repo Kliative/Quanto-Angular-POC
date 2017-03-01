@@ -80,6 +80,23 @@
         <div class="container">
             <div class="row">
                     <div class="head-icon"></div>
+
+                    <style>
+                        .back-icon {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100px;
+                            height: 100px;
+                            text-align: center;
+                            font-size: 2.5em;
+                            padding: 1.3em;
+                            font-size: 2em;
+                        }
+                    </style>
+                    <div class="back-icon" id="reQauntoCalc">
+                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                    </div>
             </div>
         </div>
         <!-- Body -->
@@ -117,7 +134,7 @@
                                     <img *ngIf="quantoForm.controls.product.value == 'WineBottle'" src="../assets/img/wine.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'PackSmokes'" src="../assets/img/smokes.png" alt="">
                                     <img *ngIf="quantoForm.controls.product.value == 'OneWayTicket'" src="../assets/img/onewayTicket.png" alt="">
-                                    <!--<img *ngIf="quantoForm.controls.product.value == 'MovieTicket'" src="../assets/img/movieTicket.png" alt="">-->
+                                    <img *ngIf="quantoForm.controls.product.value == 'MovieTicket'" src="../assets/img/movieTicket.png" alt="">
                                 </div>
                                 <p class="detail-price">
                                     <span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span>
@@ -141,13 +158,13 @@
         </div>
 
         <!-- Button -->
-        <div class="container">
+        <!--<div class="container">
             <div class="row">
                 
                 <div class="compare-btn-div" id="reQauntoCalc"></div>
                    
             </div>
-        </div>
+        </div>-->
 
  <!--<div class="margin-20">
               <pre>quantoForm value: <br>{{quantoForm.value | json}}</pre>

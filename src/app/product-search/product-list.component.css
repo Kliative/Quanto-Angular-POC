@@ -5,9 +5,9 @@
     background: -webkit-linear-gradient(top left, #681313, #FF0100);
     background: linear-gradient(to bottom right, #681313, #FF0100);
 }
-.modal-content {
-    
-}
+/*.modal-content {
+       
+}*/
 .modal-footer {
      border-top:none; 
 }
