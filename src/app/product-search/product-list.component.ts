@@ -21,7 +21,7 @@ import { PRODUCT_ITEMS } from './product.data';
                     <div class="modal-content">
                         <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+                        <h4 class="modal-title" id="modal-title">Modal Header</h4>
                         </div>
                         <div class="modal-body product-list">
                                 <product-base-item *ngFor="let productBaseItem of productBaseItems; let j=index" [items]="productBaseItem" id="productBaseItems"></product-base-item>

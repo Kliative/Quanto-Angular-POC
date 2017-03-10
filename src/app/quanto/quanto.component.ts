@@ -36,7 +36,6 @@ export class QuantoComponent implements OnInit {
               .subscribe(
                   data => {
                        
-                    //    console.log(data);
                           for (var i = 0; i < data.length; i++) { 
                               if(data[i].ISO4217_currency_alphabetic_code == this.quantoForm.controls['baseCurrency'].value){
                               
@@ -44,6 +43,9 @@ export class QuantoComponent implements OnInit {
                                 
                                 document.getElementById("basePriceTxt").innerHTML = baseCom;
                                 document.getElementById("baseCoName").innerHTML = data[i].name;
+                                
+                                document.getElementById("baseCurrSymbol").innerHTML = data[i].ISO4217_currency_symbol;
+                                document.getElementById("baseCurrSymbolDetail").innerHTML = data[i].ISO4217_currency_symbol;
 
                                 this._exchangeService.getEx().retry().subscribe(
                                         data => {
@@ -67,13 +69,19 @@ export class QuantoComponent implements OnInit {
 
                                 var destComLow = data[i].products[this.quantoForm.controls['product'].value]['norm']['l'];
                                 var destComHigh = data[i].products[this.quantoForm.controls['product'].value]['norm']['h'];
-                                
+                                                                
                                 document.getElementById("destPriceLowTxt").innerHTML = destComLow;
                                 document.getElementById("destPriceHighTxt").innerHTML = destComHigh;
 
                                 document.getElementById("destPriceTxt").innerHTML = destCom;
                                 document.getElementById("destPriceTxtEX").innerHTML = destCom;
                                 document.getElementById("destCoName").innerHTML = data[i].name;
+                                
+                                // Currency Symbol
+                                var destCurrSymbol = data[i].ISO4217_currency_symbol;
+                                document.getElementById("destCurrSymbol").innerHTML = destCurrSymbol;
+                                document.getElementById("destPriceHighCurrSymbol").innerHTML = destCurrSymbol;
+                                document.getElementById("destPriceLowCurrSymbol").innerHTML = destCurrSymbol;
 
                                 this._exchangeService.getEx().retry().subscribe(
                                         data => {

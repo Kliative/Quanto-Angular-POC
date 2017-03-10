@@ -27,13 +27,13 @@ export class ProductSearchComponent implements OnInit {
 
     ngOnInit() {
             
-            this.listDataForm = this._sFb.group({
-                product: '',
-                listBaseCurrency: '',
-                listDestinationCurrency: '',
-                productRange: ''
-                
-            });
+        this.listDataForm = this._sFb.group({
+            product: '',
+            listBaseCurrency: '',
+            listDestinationCurrency: '',
+            productRange: ''
+            
+        });
      
     }
     clearAll(){
@@ -43,28 +43,51 @@ export class ProductSearchComponent implements OnInit {
     reCalc(){
         
         this._exchangeService.getEx().subscribe(
-                                        data => {
-                                            
-                                            var prodPrices:number[]=[];
+                data => {
+                    
+                    var prodPrices:number[]=[];
 
-                                            for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
-                                                    prodPrices.push(Number(PRODUCT_ITEMS[j].price));
-                                            }
+                    for (var j = 0; j < PRODUCT_ITEMS.length; j++ ) { 
+                            prodPrices.push(Number(PRODUCT_ITEMS[j].price));
+                    }
 
-                                            var totalCash = prodPrices.reduce((a, b) => a + b, 0);
-                                            var baseCurrVal = data.rates[this.listDataForm.controls['listBaseCurrency'].value];
-                                            var destCurrVal = data.rates[this.listDataForm.controls['listDestinationCurrency'].value];
-                                           
-                                             var baseToDollar = totalCash/destCurrVal;
-                                             var finalConv = baseToDollar*baseCurrVal;
+                    var totalCash = prodPrices.reduce((a, b) => a + b, 0);
+                    var baseCurrVal = data.rates[this.listDataForm.controls['listBaseCurrency'].value];
+                    var destCurrVal = data.rates[this.listDataForm.controls['listDestinationCurrency'].value];
+                    
+                        var baseToDollar = totalCash/destCurrVal;
+                        var finalConv = baseToDollar*baseCurrVal;
 
-                                             
-                                            //  document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
-                                             document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
-                                            
-                                }); 
+                        
+                    //  document.getElementById("totalCash").innerHTML = finalConv.toFixed(2).toString();
+                        document.getElementById("totalCash-open").innerHTML = finalConv.toFixed(2).toString();
+                    
+        }); 
     }
+    quantoListClick(form: FormGroup){
+        console.log('clicked');
+         this._productService.searchData()
+              .retry()
+              .subscribe(
+                  data => {
+                         for (var i = 0; i < data.length; i++) { 
 
+                            if(data[i].ISO4217_currency_alphabetic_code == this.listDataForm.controls['listDestinationCurrency'].value){
+                                    document.getElementById("totalDestCash-currSymbol").innerHTML = data[i].ISO4217_currency_symbol;
+                                    document.getElementById("destCur-list").innerHTML = data[i].ISO4217_currency_symbol;    
+                            }
+                            if(data[i].ISO4217_currency_alphabetic_code == this.listDataForm.controls['listBaseCurrency'].value){
+
+                                    document.getElementById("totalBaseCountry-open-currSymbol").innerHTML = data[i].ISO4217_currency_symbol;
+                                    document.getElementById("totalBaseCountry-open-currSymbol-basecountry").innerHTML = data[i].ISO4217_currency_symbol;
+                                    document.getElementById("baseCur-list").innerHTML = data[i].ISO4217_currency_symbol;
+                                    document.getElementById("modal-title").innerHTML = "Product Prices in "+data[i].name;
+
+                            }
+                         }
+
+                  });
+    }
     onAddProd(form: FormGroup){
         // console.log(form);
         this._productService.searchData()

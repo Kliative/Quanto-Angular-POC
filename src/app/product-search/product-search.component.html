@@ -49,7 +49,7 @@
         <div class="container">
             <div class="row">
                 
-                <div id="grocery-countryBtn" (click)="reCalc()" class="btn-div"></div>
+                <div id="grocery-countryBtn" (click)="reCalc()" (click)=" quantoListClick(listDataForm.value)" class="btn-div"></div>
                 
             </div>
         </div>
@@ -99,19 +99,6 @@ List Section
                             </div>
                             <div id="listTotals" class="reveal-open">
                                     
-                                    <!-- Closed --> 
-                                    <!--<div class="convertedBlock" id="closedTotalBox">
-                                        <div class="container">
-                                            <div class="row">
-                                            <div class="col-xs-6">
-                                                <p>Total in <span class="smallTotals"><span id="totalBaseCountry-currCode">ZAR</span>: <span id="totalCash"></span></span></p>
-                                            </div> 
-                                            <div class="col-xs-6">
-                                               <p>Total in <span class="smallTotals"><span id="totalDestCash-currCode">GBP</span>: <span id="totalDestCash"></span></span></p>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>-->
                                     <!-- Open -->
                                     <div class="convertedBlock" id="openTotalBox">
                                         <div class="container">
@@ -153,26 +140,6 @@ List Section
                                 <div class="row">
 
                                     <product-list></product-list>
-                                    <!--<div class="product-cell">
-                                        <div class="col-xs-4 col-sm-4 product-text">
-                                             Domestic Beer 
-                                        </div>
-                                        <div class="col-xs-2 col-sm-2 range-text">
-                                             <span class="product-range">
-                                                 <i class="fa fa-cutlery" aria-hidden="true"></i>
-                                                 <i class="fa fa-bed" aria-hidden="true"></i>
-                                                 <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                                             </span>
-                                        </div>
-                                        <div class="col-xs-3 col-sm-3 quantity-text">
-                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                            <span class="product-quantity">33</span>
-                                            <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                        </div> 
-                                        <div class="col-xs-3 col-sm-3">
-                                            <span class="currSymbol-list">£</span>5000.00
-                                        </div>    
-                                    </div>-->
 
                                 </div>
                             </div>

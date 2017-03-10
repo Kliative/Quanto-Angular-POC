@@ -11,5 +11,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  closeBtn(){
+    document.getElementById("mySidenav").style.width = "0";
+  }
+  openBtn(){
+    document.getElementById("mySidenav").style.width = "100%";
+  }
 }
