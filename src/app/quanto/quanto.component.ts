@@ -13,14 +13,58 @@ export class QuantoComponent implements OnInit {
 
   public quantoForm: FormGroup;
 
-
   public v1: number;
   public v2: number;
 
   public baseCurCon: number;
 
   constructor(private _fb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService) { }
+// 
+     public productItems:Array<any> = [
+         {id: 'Meal', text: 'Meal at Restaurant'},
+         {id: 'McMeal', text: 'McMeal at McDonalds'},
+         {id: 'DomBeer', text: 'Domestic Beer'},
+         {id: 'ImpBeer', text: 'Imported Beer'},
+         {id: 'Coke', text: 'Soft Drink (Can)'},
+         {id: 'WineBottle', text: 'Wine Bottle'},
+         {id: 'PackSmokes', text: 'Cigarettes (20 box)'},
+         {id: 'OneWayTicket', text: 'One Way Travel Ticket'},
+         {id: 'MovieTicket', text: 'Movie Ticket (1 person)'},
+     ];
+ 
+  private value:any = {};
+  private _disabledV:string = '0';
+  private disabled:boolean = false;
+ 
+  private get disabledV():string {
+    return this._disabledV;
+  }
+ 
+  private set disabledV(value:string) {
+    this._disabledV = value;
+    this.disabled = this._disabledV === '1';
+  }
+ 
+  public selected(value:any):void {
+    
+    this.quantoForm.patchValue({product: value.id});
+  }
+ 
+  public removed(value:any):void {
+    console.log('Removed value is: ', value);
+  }
+ 
+  public typed(value:any):void {
+    console.log('New search input: ', value);
+  }
+ 
+  public refreshValue(value:any):void {
+    this.value = value.id;
+  }
 
+  public countries = [];
+  quantoSection:boolean = false;
+  
   ngOnInit() {
 
       this.quantoForm = this._fb.group({
@@ -28,7 +72,30 @@ export class QuantoComponent implements OnInit {
             baseCurrency: '',
             destinationCurrency: ''
         });
+        this.populateDropD();
+  }
+  toggleViews(){
+        if(this.quantoSection == false){
+            this.quantoSection = true;
+        } else {
+            this.quantoSection = false;
+        }
+    }
+  populateDropD(){
+       this._productService.searchData()
+              .retry()
+              .subscribe(
+                  data => {
+                    for (var i = 0; i < data.length; i++) { 
 
+                        var countryListData = data[i];
+                        var countryName = countryListData.name;
+                        var countryCurrencyCode = countryListData.ISO4217_currency_alphabetic_code;
+                        
+                        this.countries.push({value: countryCurrencyCode,display:countryName});
+                    }
+
+                  });
   }
   quantoClick(form: FormGroup){
       this._productService.searchData()

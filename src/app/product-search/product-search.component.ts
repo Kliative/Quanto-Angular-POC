@@ -24,6 +24,10 @@ export class ProductSearchComponent implements OnInit {
 
      constructor (private _sFb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService){}
      
+     public countries = [];
+
+     groceryListSection:boolean = false;
+     
 
     ngOnInit() {
             
@@ -34,8 +38,32 @@ export class ProductSearchComponent implements OnInit {
             productRange: ''
             
         });
-     
+        this.populateDropD();
     }
+    toggleViews(){
+        if(this.groceryListSection == false){
+            this.groceryListSection = true;
+        } else {
+            this.groceryListSection = false;
+        }
+    }
+    populateDropD(){
+       this._productService.searchData()
+              .retry()
+              .subscribe(
+                  data => {
+                    for (var i = 0; i < data.length; i++) { 
+
+                        var countryListData = data[i];
+                        var countryName = countryListData.name;
+                        var countryCurrencyCode = countryListData.ISO4217_currency_alphabetic_code;
+                        
+                        this.countries.push({value: countryCurrencyCode,display:countryName});
+                        
+                    }
+
+                  });
+  }
     clearAll(){
         this._productService.deleteAll();
         this.reCalc();

@@ -1,7 +1,7 @@
 
 <form [formGroup]="listDataForm" novalidate (ngSubmit)="save(listDataForm.value, listDataForm.valid)">
 
-<div id="wrapper" class="grocery-countrySel">
+<div id="wrapper" [hidden]="groceryListSection" class="grocery-countrySel">
         <!-- Header -->
         <div class="container">
             <div class="row">
@@ -19,8 +19,9 @@
                                     <img src="/assets/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select name="" id="listBaseCurSel" class="select-input-select" formControlName="listBaseCurrency">
+                                    <select name="" class="select-input-select" formControlName="listBaseCurrency">
                                         <option value="">Current Location</option>
+                                        <option *ngFor="let country of countries" [value]="country.value">{{country.display}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -32,8 +33,9 @@
                                     <img src="/assets/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select name="" id="listDestCurSel" class="select-input-select" formControlName="listDestinationCurrency">
+                                    <select name="" class="select-input-select" formControlName="listDestinationCurrency">
                                         <option value="">Destination Location</option>
+                                        <option *ngFor="let country of countries" [value]="country.value">{{country.display}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -49,7 +51,7 @@
         <div class="container">
             <div class="row">
                 
-                <div id="grocery-countryBtn" (click)="reCalc()" (click)=" quantoListClick(listDataForm.value)" class="btn-div"></div>
+                <div (click)="reCalc()" (click)="toggleViews()" (click)="quantoListClick(listDataForm.value)" class="btn-div"></div>
                 
             </div>
         </div>
@@ -61,7 +63,7 @@ List Section
 -->
 
 
-    <div id="wrapper" class="grocery-list-section">
+    <div id="wrapper" [hidden]="!groceryListSection" class="grocery-list-section">
         <!-- Header -->
         <div class="container">
             <div class="row">
@@ -79,7 +81,7 @@ List Section
                             font-size: 2em;
                         }
                     </style>
-                    <div class="back-icon" id="reSelCountry" (click)="clearAll()">
+                    <div class="back-icon" (click)="toggleViews()" (click)="clearAll()">
                         <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
                     </div>
             </div>

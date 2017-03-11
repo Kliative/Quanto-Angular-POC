@@ -24,7 +24,7 @@
         </select>
         <select class="form-control" formControlName="location" id="postCountrySel" #location>
                   <option value="">Select Location...</option>
-                  <option id="postCountry"></option>
+                  <option *ngFor="let country of countries" [value]="country.value">{{country.display}}</option>
         </select>
         <!--<input type="text" class="form-control" formControlName="location" id="location" #location>-->
 

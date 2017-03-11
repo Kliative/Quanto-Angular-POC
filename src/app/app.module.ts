@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { SelectModule } from 'ng2-select';
+
+import { routes } from './app.routing';
 import { AppComponent } from './app.component';
 import {ProductListComponent} from "./product-search/product-list.component";
 import {ProductItemComponent} from "./product-search/product-item.component";
@@ -14,10 +17,6 @@ import { ProductService } from './services/product.service';
 import { ProductSendComponent } from './product-send/product-send.component';
 import { QuantoComponent } from './quanto/quanto.component';
 import { MenuComponent } from './menu.component';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -34,7 +33,9 @@ import { MenuComponent } from './menu.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SelectModule,
+    routes
   ],
   providers:[ProductService, ExchangeService],
   bootstrap: [AppComponent]

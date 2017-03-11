@@ -1,5 +1,5 @@
     <form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
-    <div id="wrapper" class="quant-p1">
+    <div id="wrapper" [hidden]="quantoSection">
 
         <!-- Header -->
         <div class="container">
@@ -19,9 +19,9 @@
                                     <img src="../assets/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select id="baseCurSel" class="select-input-select" formControlName="baseCurrency">
+                                    <select class="select-input-select" formControlName="baseCurrency">
                                         <option value="">Select Current Location...</option>
-                                        
+                                        <option *ngFor="let country of countries" [value]="country.value">{{country.display}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -33,8 +33,9 @@
                                     <img src="../assets/img/currLoc-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select id="destCurSel" class="select-input-select"  formControlName="destinationCurrency"> 
+                                    <select class="select-input-select"  formControlName="destinationCurrency"> 
                                         <option value="">Select Destination Location...</option>
+                                        <option *ngFor="let country of countries" [value]="country.value">{{country.display}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -43,11 +44,10 @@
                                     <img src="../assets/img/cart-icon.svg" alt="">
                                 </div>
                                 <div class="select-input">
-                                    <select id="prodSel" class="select-input-select" formControlName="product">
+                                    <!--<select id="prodSel" class="select-input-select" formControlName="product">
                                         <option value="">Select Product...</option>
                                         <option value="Meal">Meal at Restaurant</option>
                                         <option value="McMeal">McMeal at McDonalds</option>
-                                        <option value="Meal">Meal at Restaurant</option>
                                         <option value="DomBeer">Domestic Beer</option>
                                         <option value="ImpBeer">Imported Beer</option>
                                         <option value="Coke">Soft Drink (Can)</option>
@@ -55,7 +55,22 @@
                                         <option value="PackSmokes">Cigarettes (20 box)</option>
                                         <option value="OneWayTicket">One Way Travel Ticket</option>
                                         <option value="MovieTicket">Movie Ticket (1 person)</option>
-                                    </select>
+                                    </select>-->
+                                    <style>
+                                    #ng-select .form-control {
+                                        background-color: transparent;
+                                        border: none;
+                                    }
+                                    </style>
+                                    <ng-select id="ng-select" [allowClear]="true"
+                                                [items]="productItems"
+                                                [disabled]="disabled"
+                                                (data)="refreshValue($event)"
+                                                (selected)="selected($event)"
+                                                (removed)="removed($event)"
+                                                (typed)="typed($event)"
+                                                placeholder="Select Product">
+                                    </ng-select>
                                 </div>
                             </div>
                     </div>
@@ -69,13 +84,13 @@
         <!-- Button -->
         <div class="container">
             <div class="row">
-                 <button type="submit" style="border:none; background-color: transparent" id="QuantoCalc" class="btn-div"></button>  
+                 <button type="submit" style="border:none; background-color: transparent" (click)="toggleViews()" class="btn-div"></button>  
             </div>
         </div>
 
 
     </div>
-    <div id="wrapper" class="quant-p2">
+    <div id="wrapper" [hidden]="!quantoSection">
         <!-- Header -->
         <div class="container">
             <div class="row">
@@ -94,7 +109,7 @@
                             font-size: 2em;
                         }
                     </style>
-                    <div class="back-icon" id="reQauntoCalc">
+                    <div class="back-icon" (click)="toggleViews()">
                         <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
                     </div>
             </div>
