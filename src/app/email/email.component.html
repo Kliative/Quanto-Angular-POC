@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+
+        <div class="form-container">
+                    <div class="back-icon">
+                        <a routerLink="/login" id="back-icon"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></a>
+                    </div>
+            <img src="assets/img/quantoLogo.svg" id="lock">
+
+
+            <h2><i class="fa fa-envelope" aria-hidden="true"></i> Custom Login</h2>
+
+            <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+
+            <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+              <input class="auth-input" type="text" placeholder="Email address.." (ngModel)="email" name="email" required>
+              <input class="auth-input" type="password" placeholder="Password" (ngModel)="password" name="password" required>
+
+              <button class="auth-button" type="submit" [disabled]="!formData.valid">Log in</button>
+              <a routerLink="/signup" class="alc">Don't have an account?</a>
+          </form>
+        </div>
+
+    </div>
+  </div>
+</div>

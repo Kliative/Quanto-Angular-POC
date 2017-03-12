@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> 
+
+        <div class="form-container">
+          <img src="assets/img/quantoLogo.svg" id="lock">
+
+            <span class="error" *ngIf="error">{{ error }}</span>
+
+          <button class="auth-input" (click)="loginFb()" id="fb"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login</button><br>
+          <button class="auth-input" (click)="loginGoogle()" id="google"><i class="fa fa-google" aria-hidden="true"></i> Google</button>
+          <button class="auth-button" routerLink="/login-email" id="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</button>
+
+          <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+        </div>
+
+    </div>
+  </div>
+</div>

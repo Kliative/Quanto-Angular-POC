@@ -1,0 +1,49 @@
+#lock {
+    width:40%;
+    margin: 1.5em auto 4em auto;
+    display:block;
+}
+.auth-input{
+    padding:0.5em;
+    width:100%;
+    margin-bottom:15px;
+    font-size:1.3em;
+    border-radius: 30px;
+    border:1px solid #DF0000;
+    color: #DF0000;
+    background-color: transparent;
+}
+.auth-button {
+    padding:0.5em;
+    width:100%;
+    margin-bottom:15px;
+    font-size:1.3em;
+    border-radius: 30px;
+    border: none;
+    color: #fff;
+    background-color: #DF0000;  
+}
+a{
+      color: #DF0000;  
+}
+
+@media (max-width: 600px) {
+    #page {
+        padding:1em;
+    }
+    #toolbar {
+        width:100%;
+        
+    }
+    /*#fb {
+        background:#3B5998;
+    }
+
+    #google {
+        background: #3B8598;
+    }
+
+    #email {
+        background: #ECECEC;
+    }*/
+}

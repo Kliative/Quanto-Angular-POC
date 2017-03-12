@@ -1,0 +1,48 @@
+.auth-button {
+    padding:0.5em;
+    width:100%;
+    cursor:pointer;
+    margin-bottom:15px;
+    font-size:1.3em;
+    border-radius: 30px;
+    border:none;
+    color: #fff;
+    background-color: #DF0000;
+}
+#lock {
+    width:40%;
+    margin: 1.5em auto 4em auto;
+    display:block;
+}
+a {
+    color: #DF0000;
+}
+.auth-input{
+    padding:0.5em;
+    width:100%;
+    margin-bottom:15px;
+    font-size:1.3em;
+    border-radius: 30px;
+    border:1px solid #DF0000;
+    color: #DF0000;
+    background-color: transparent;
+}
+.back-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 2.5em;
+    padding: 1.3em;
+    font-size: 2em;
+    color: #DF0000;
+}
+.back-icon a {
+    color: #333;
+}
+h2 {
+    font-family: bariol-light;
+    color: #DF0000;
+}

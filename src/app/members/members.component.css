@@ -1,0 +1,48 @@
+body {
+    background: #fff; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(#fff, #F3F3F3); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#fff, #F3F3F3); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#fff, #F3F3F3); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#fff, #F3F3F3); /* Standard syntax */
+}
+#toolbar {
+    padding:0;
+    width:100%;
+}
+#lock {
+    width:40%;
+    margin: 1.5em auto 4em auto;
+    display:block;
+}
+header {
+    background:#3B8598;
+    width:100%;
+}
+
+.basic-btn {
+    width:100px;
+    margin:0;
+}
+
+#page {
+    padding:3em;
+    margin:0;
+}
+
+#page img {
+    margin-top:30px;
+}
+
+h2 {
+    margin:0;
+}
+
+
+@media (max-width: 600px) {
+    #page {
+        padding:1em;
+    }
+    #toolbar {
+        width:100%;
+    }
+}
