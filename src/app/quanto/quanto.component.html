@@ -1,5 +1,5 @@
     <form [formGroup]="quantoForm" novalidate (ngSubmit)="quantoClick(quantoForm.value)">
-    <div id="wrapper" [hidden]="quantoSection">
+    <div id="wrapper" [hidden]="quantoSearchSection">
 
         <!-- Header -->
         <div class="container">
@@ -155,6 +155,8 @@
                                     <span id="destCurrSymbol"></span> <span id="destPriceTxt">Loerm</span>
                                     <br>
                                     <span class="detail-destCountry">in <span id="destCoName"></span></span>
+                                    <br>
+                                    <a class="qunatoFind-btn" (click)="toggleFinder()"><img src="../assets/img/quantoFind-icon.svg" alt=""></a>
                                 </p>
                                 <p class="detail-conversion">
                                     <span id="baseCurrSymbol"></span><span id="basePriceTxt">Loerm</span> in <span id="baseCoName"></span>
@@ -167,6 +169,101 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-4 col-lg-4"></div>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <!--<div class="container">
+            <div class="row">
+                
+                <div class="compare-btn-div" id="reQauntoCalc"></div>
+                   
+            </div>
+        </div>-->
+
+ <!--<div class="margin-20">
+              <pre>quantoForm value: <br>{{quantoForm.value | json}}</pre>
+</div>-->
+    </div>
+    <div id="wrapper" style="position: absolute; z-index: 999;" [hidden]="!quantoFindSection">
+        <!-- Header -->
+        <div class="container">
+            <div class="row">
+                    <div class="head-icon"></div>
+
+                    <style>
+                        .back-icon {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 100px;
+                            height: 100px;
+                            text-align: center;
+                            font-size: 2.5em;
+                            padding: 1.3em;
+                            font-size: 2em;
+                        }
+                    </style>
+                    <div class="back-icon" (click)="toggleFinder()">
+                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                    </div>
+            </div>
+        </div>
+        <!-- Body -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-4"></div>
+                <div class="col-xs-12 col-sm-12  col-md-4 col-lg-4">
+                  <form [formGroup]="loginForm" (ngSubmit)="searchRes($event)">
+    <input formControlName="keyword" type="text" placeholder="Your email" required>
+  <button type="submit">Search</button>
+</form>
+
+<sebm-google-map 
+[latitude]="lat" 
+[longitude]="lng"
+[zoom]="zoom"
+[disableDefaultUI]="false"
+[zoomControl]="false"
+(mapClick)="mapClicked($event)">
+<!-- shop Icons -->
+    <sebm-google-map-marker 
+    *ngFor="let m of markers;let i = index"
+    (markerClick)="clickedMarker(m,i)"
+      [latitude]="m.lat" 
+      [longitude]="m.lng"
+      (markerDraggable)="m.draggable"
+      (dragEnd)="markerDragEnd(m,$event)"
+      [iconUrl]="'./assets/images/shop-icon.png'">
+        <sebm-google-map-info-window>
+            <strong>{{m.name}}</strong>
+            <br>
+            <a href="http://maps.apple.com/?q={{m.lat}},{{m.lng}}">Directions</a>
+        </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+    <!-- Current Location Icon -->
+    <sebm-google-map-marker *ngIf="lat != null && lng != null" [latitude]="lat" [longitude]="lng" [iconUrl]="'../assets/img/currFinderLoc-icon.png'">
+    </sebm-google-map-marker>
+
+    <!-- Input Search Marker Test-->
+    <sebm-google-map-marker 
+    *ngFor="let iSm of inputSearchMarkers;let j = index"
+    (markerClick)="clickedMarker(iSm,j)"
+      [latitude]="iSm.lat" 
+      [longitude]="iSm.lng"
+      (markerDraggable)="iSm.draggable"
+      (dragEnd)="markerDragEnd(iSm,$event)"
+      [iconUrl]="'./assets/images/bar-icon.png'">
+        <sebm-google-map-info-window>
+            <strong>{{iSm.name}}</strong>
+            <br>
+            <a href="http://maps.apple.com/?q={{iSm.lat}},{{iSm.lng}}">Directions</a>
+        </sebm-google-map-info-window>
+    </sebm-google-map-marker>
+</sebm-google-map>
+                        
                 </div>
                 <div class="col-md-4 col-lg-4"></div>
             </div>

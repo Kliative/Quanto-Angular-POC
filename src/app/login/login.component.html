@@ -7,9 +7,9 @@
 
             <span class="error" *ngIf="error">{{ error }}</span>
 
-          <button class="auth-input" (click)="loginFb()" id="fb"><i class="fa fa-facebook-square" aria-hidden="true"></i> Login</button><br>
-          <button class="auth-input" (click)="loginGoogle()" id="google"><i class="fa fa-google" aria-hidden="true"></i> Google</button>
-          <button class="auth-button" routerLink="/login-email" id="email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</button>
+          <button class="auth-input" (click)="loginFb()" id="fb">Login with <i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</button><br>
+          <button class="auth-input" (click)="loginGoogle()" id="google">Login with <i class="fa fa-google" aria-hidden="true"></i> Google</button>
+          <button class="auth-button" routerLink="/login-email" id="email">Login with <i class="fa fa-envelope" aria-hidden="true"></i> Email</button>
 
           <a routerLink="/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
         </div>

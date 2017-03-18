@@ -26,6 +26,9 @@ import { EmailComponent } from './email/email.component';
 import { SignupComponent } from './signup/signup.component';
 import { MembersComponent } from './members/members.component';
 
+// Gmaps
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 export const firebaseConfig = {
     apiKey: "AIzaSyCu-KybJpSOTL9U5kfR_egxByJ7cmAIGiI",
     authDomain: "quantotest-8a1ec.firebaseapp.com",
@@ -56,7 +59,10 @@ export const firebaseConfig = {
     ReactiveFormsModule,
     SelectModule,
     routes,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDkXM2xF6yavfcJ7ZX4sDP22CmxMXk-HAI'
+    })
   ],
   providers:[ProductService, ExchangeService, AuthGuard],
   bootstrap: [AppComponent]

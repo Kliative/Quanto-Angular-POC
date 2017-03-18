@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from '../services/product.service'
 import { ExchangeService } from '../services/exchange.service'
+import { MarkerService } from '../services/marker.service';
 
 @Component({
   selector: 'app-quanto',
   templateUrl: './quanto.component.html',
-  styleUrls: ['./quanto.component.css']
+  styleUrls: ['./quanto.component.css'],
+  providers:[MarkerService]
 })
 
 export class QuantoComponent implements OnInit {
@@ -18,7 +20,36 @@ export class QuantoComponent implements OnInit {
 
   public baseCurCon: number;
 
-  constructor(private _fb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService) { }
+
+  //GMaps
+    //Zoom Level
+  zoom: number = 15;
+  // research current location
+  // Start Position
+  // lat: number = -26.01428;
+  // lng: number = 28.14738;
+  public loginForm: FormGroup;
+  lat: number;
+  lng: number;
+  // Values
+  markerName:string;
+  markerLat:string;
+  markerLng:string;
+  markerDraggable:string;
+
+
+  inputSearchMarkers: marker[] = [];
+   markers: marker[] = [];
+  constructor(private _fb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService,private _markerService:MarkerService) {
+    // navigator.geolocation.watchPosition((position) =>{
+    //   this.lat = position.coords.latitude;
+    //   this.lng = position.coords.longitude;
+    // });
+
+    this.lat = -25.9355700;
+    this.lng = 28.1270430;
+
+   }
 // 
      public productItems:Array<any> = [
          {id: 'Meal', text: 'Meal at Restaurant'},
@@ -63,7 +94,9 @@ export class QuantoComponent implements OnInit {
   }
 
   public countries = [];
+  quantoSearchSection:boolean = false;
   quantoSection:boolean = false;
+  quantoFindSection:boolean = false;
   
   ngOnInit() {
 
@@ -72,15 +105,94 @@ export class QuantoComponent implements OnInit {
             baseCurrency: '',
             destinationCurrency: ''
         });
-        this.populateDropD();
+      this.loginForm = this._fb.group({
+            keyword: ''
+      });
+      this.loadSearch();
+      this.populateDropD();
   }
+  searchRes() {
+    // console.log(event);
+    // console.log(this.loginForm.controls['keyword'].value);
+    this.removeMaker();
+    this._markerService.inputResult(this.lat,this.lng,this.loginForm.controls['keyword'].value)
+              .subscribe(
+                  data => {
+                    
+                    for (var i in data) {
+                      var loc = data[i];
+                        if(data[i]==loc){
+                          for (var i in loc) {
+                            if(loc[i].geometry){
+                              console.log(loc[i].geometry.location);
+
+                              // this.markers = loc[i].geometry.location;
+                              var searchLoc = {
+                                name: loc[i].name,
+                                lat: parseFloat(loc[i].geometry.location.lat),
+                                lng: parseFloat(loc[i].geometry.location.lng),
+                                draggable:false
+                              }
+                              this.inputSearchMarkers.push(searchLoc);
+                            }
+                        }
+                      }
+                    }
+                  });
+  }
+  // Shop example 
+  loadSearch(){
+    this._markerService.getSearch(this.lat,this.lng)
+              .subscribe(
+                  data => {
+                    
+                    for (var i in data) {
+                      var loc = data[i];
+                        if(data[i]==loc){
+                          for (var i in loc) {
+                            if(loc[i].geometry){
+                              // console.log(loc[i].geometry.location);
+
+                              // this.markers = loc[i].geometry.location;
+                              var searchLoc = {
+                                name: loc[i].name,
+                                lat: parseFloat(loc[i].geometry.location.lat),
+                                lng: parseFloat(loc[i].geometry.location.lng),
+                                draggable:false
+                              }
+                              this.markers.push(searchLoc);
+                            }
+                        }
+                      }
+                    }
+                  });
+  }
+  removeMaker(){
+    console.log('removeMaker');
+    for(var i=0;i<this.inputSearchMarkers.length;i++){
+      this.inputSearchMarkers.splice(0,this.inputSearchMarkers.length);
+    }
+  }
+  // Toggle Views
   toggleViews(){
         if(this.quantoSection == false){
             this.quantoSection = true;
+            this.quantoSearchSection = true;
         } else {
             this.quantoSection = false;
+            this.quantoSearchSection = false;
         }
     }
+  toggleFinder(){
+      if(this.quantoFindSection == false){
+            this.quantoFindSection = true;
+            this.quantoSection = false;
+            this.quantoSearchSection = true;
+        } else {
+            this.quantoFindSection = false;
+            this.quantoSection = true;
+        }
+  }
   populateDropD(){
        this._productService.searchData()
               .retry()
@@ -207,3 +319,10 @@ export class QuantoComponent implements OnInit {
                       );
   }
 }
+    // Marker 
+    interface marker {
+      name?:string;
+      lat:number;
+      lng:number;
+      draggable:boolean;
+    }
