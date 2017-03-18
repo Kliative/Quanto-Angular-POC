@@ -61,7 +61,7 @@ export const firebaseConfig = {
     routes,
     AngularFireModule.initializeApp(firebaseConfig),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDkXM2xF6yavfcJ7ZX4sDP22CmxMXk-HAI'
+      apiKey: 'AIzaSyAbtMkAg1fagf0fV2bHY2FGn7yYm1-JrTI'
     })
   ],
   providers:[ProductService, ExchangeService, AuthGuard],

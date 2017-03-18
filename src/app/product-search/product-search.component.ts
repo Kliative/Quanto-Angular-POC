@@ -14,7 +14,7 @@ import { PRODUCT_ITEMS } from './product.data';
    templateUrl: 'product-search.component.html',
    styleUrls: ['product-search.component.css']
 })
-
+ 
 export class ProductSearchComponent implements OnInit {
      public totalDestCash: string;
      public totalCash: string;
