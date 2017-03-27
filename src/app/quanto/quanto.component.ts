@@ -37,18 +37,20 @@ export class QuantoComponent implements OnInit {
   markerLng:string;
   markerDraggable:string;
 
+  geoType:string;
+  geoKeyword:string;
 
   inputSearchMarkers: marker[] = [];
    markers: marker[] = [];
   constructor(private _fb:FormBuilder, private _productService: ProductService, private _exchangeService: ExchangeService,private _markerService:MarkerService) {
-    // navigator.geolocation.watchPosition((position) =>{
-    //   this.lat = position.coords.latitude;
-    //   this.lng = position.coords.longitude;
-    // });
+    navigator.geolocation.watchPosition((position) =>{
+      this.lat = position.coords.latitude;
+      this.lng = position.coords.longitude;
+    });
 
-    this.lat = -25.9355700;
-    this.lng = 28.1270430;
-
+    // this.lat = -25.9355700;
+    // this.lng = 28.1270430;
+    
    }
 // 
      public productItems:Array<any> = [
@@ -108,14 +110,60 @@ export class QuantoComponent implements OnInit {
       this.loginForm = this._fb.group({
             keyword: ''
       });
-      this.loadSearch();
+      // this.loadSearch();
       this.populateDropD();
+      
   }
   searchRes() {
     // console.log(event);
-    // console.log(this.loginForm.controls['keyword'].value);
+    // console.log(this.quantoForm.controls['product'].value);
     this.removeMaker();
-    this._markerService.inputResult(this.lat,this.lng,this.loginForm.controls['keyword'].value)
+
+    switch (this.quantoForm.controls['product'].value) {
+                case "Meal":
+                    this.geoKeyword = "restaurant";
+                    this.geoType = "restaurant";
+                    break;
+                case "McMeal":
+                    this.geoKeyword = "mcdonalds";
+                    this.geoType = "";
+                    break;
+                case "DomBeer":
+                    this.geoKeyword = "bar";
+                    this.geoType = "bar";
+                    break;
+                case "ImpBeer":
+                    this.geoKeyword = "bar";
+                    this.geoType = "bar";
+                    break;
+                case "Coke":
+                    this.geoKeyword = "grocery+store";
+                    this.geoType = "store";
+                    break;
+                case "WineBottle":
+                    this.geoKeyword = "liquor+store";
+                    this.geoType = "liquor_store";
+                    break;
+                case "PackSmokes":
+                    this.geoKeyword = "petrol+station+grocer+store";
+                    this.geoType = "gas_station";
+                    break;
+                case "OneWayTicket":
+                    this.geoKeyword = "train+station";
+                    this.geoType = "train_station";
+                    break;
+                case "MovieTicket":
+                    this.geoKeyword = "movie";
+                    this.geoType = "movie_theater";
+                    break;
+                default:
+            }
+    console.log(this.geoType);
+    console.log(this.geoKeyword);
+    // this._markerService.inputResult(this.lat,this.lng,this.loginForm.controls['keyword'].value)
+    console.log(this.lat);
+      console.log(this.lng);
+    this._markerService.inputResult(this.lat,this.lng,this.geoKeyword,this.geoType)
               .subscribe(
                   data => {
                     
